@@ -75,12 +75,7 @@ const AppContent = () => {
 
 // Main App component
 function App() {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-  // Instead of a timeout, just set loading to false on mount
-  setLoading(false);
-}, []);
+  
   useEffect(() => {
   fetch("https://ahaan-software-1.onrender.com/api/visitor/count")
     .then(res => res.json())
@@ -92,12 +87,12 @@ function App() {
 
   return (
     <Router>
-      {loading && <Preloader />}
-      <div style={{ opacity: loading ? 0 : 1, transition: "opacity 0.7s ease" }}>
+    
+     
         <AppContent />
-        {/* <ChatWidget/> */}
+        
         <WhatsAppChat />
-      </div>
+    
     </Router>
   );
 }

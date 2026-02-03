@@ -9,14 +9,16 @@ import {
 import Header from "./components/Layouts/Header/Header";
 import TopHeader from "./components/Layouts/Header/TopHeader";
 import Footer from "./components/Layouts/Footer/Footer";
-import Service from "./components/Pages/Service/Service";
-import About from "./components/Pages/AboutUs/About";
-import Industry from "./components/Pages/Industry/Industry";
-import Home from "./components/Pages/Home/Home";
+const Home = React.lazy(() => import("./components/Pages/Home/Home"));
+const About = React.lazy(() => import("./components/Pages/AboutUs/About"));
+const Service = React.lazy(() => import("./components/Pages/Service/Service"));
+const Industry = React.lazy(() => import("./components/Pages/Industry/Industry"));
+const Blog = React.lazy(() => import("./components/Pages/Blog/Blog"));
+const Portfolios = React.lazy(() => import("./components/Pages/Portfolio/Portfolios"));
 import Landing from "./components/Landing/Landing";
 import WhatsAppChat from "./components/Whatsapp/WhatsAppChat";
-import Blog from "./components/Pages/Blog/Blog";
-import Portfolios from "./components/Pages/Portfolio/Portfolios";
+
+
 import Preloader from "./components/Preloader/Preloader";
 import BlogDetails from "./components/Pages/Blog/BlogDetails";
 
@@ -88,11 +90,13 @@ function App() {
   return (
     <Router>
     
-     
-        <AppContent />
+     <Suspense fallback={<Preloader />}>
+     <AppContent />
         
         <WhatsAppChat />
     
+     </Suspense>
+        
     </Router>
   );
 }

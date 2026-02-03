@@ -1,5 +1,4 @@
 import React from "react";
-import FirstBanner from "../../Layouts/Body/FirstBanner";
 import FirstSection from "../../Layouts/Body/FirstSection";
 import ThirdSection from "../../Layouts/Body/ThirdSection";
 import WhyChooseUs from "../../Layouts/Body/WhyChooseUs";
@@ -13,12 +12,11 @@ import WhoWeAreSection from "../../Layouts/Body/WhoWeAreSection";
 import ServicesSection from "../Portfolio/ServicesSection";
 import CaseStudyCarousel from "../../Layouts/Body/CaseStudyCarousel";
 import ConnectSection from "../../Layouts/Body/ConnectSection";
-import HeroSection from "../../Layouts/Body/HeroSection";
+
 const Home = () => {
   return (
     <div>
-      {/* <FirstBanner /> */}
-      {/* <HeroSection/> */}
+     
       <HeroBanner />
       <WhoWeAreSection />
       <ServicesSection />

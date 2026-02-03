@@ -19,10 +19,9 @@ import Blog from "./components/Pages/Blog/Blog";
 import Portfolios from "./components/Pages/Portfolio/Portfolios";
 import Preloader from "./components/Preloader/Preloader";
 import BlogDetails from "./components/Pages/Blog/BlogDetails";
-import CustomCursor from "./components/Custom Curser/CustomCursor";
-import WindowPopup from "./components/WindowsPopup/WindowPopup";
+
 import SearchResults from "./components/Pages/Blog/SearchResults";
-import ChatWidget from "./components/Chat/ChatWidget";
+
 import AllDevelopment from "./components/Pages/Portfolio/Tabs-Templates/AllDevelopment";
 import AllUiUxDesign from "./components/Pages/Portfolio/Tabs-Templates/AllUiUxDesign";
 
@@ -88,7 +87,7 @@ function App() {
   fetch("https://ahaan-software-1.onrender.com/api/visitor/count")
     .then(res => res.json())
     .then(data => {
-      console.log("Visitor Count:", data.visitors);
+      
     })
     .catch(err => console.error(err));
 }, []);

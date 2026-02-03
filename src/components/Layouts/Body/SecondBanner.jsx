@@ -29,7 +29,7 @@ const CallToAction = () => {
           <h3 className="whychooseus-label">Ready to Innovate Your Business?</h3>
           <div className="second-banner-phone-numbers">
  
-            <p target="_blank" onClick={() => window.open("https://wa.me/13214210740", "_blank")}>
+            <div target="_blank" onClick={() => window.open("https://wa.me/13214210740", "_blank")}>
               <div style={{ lineHeight: "1.2" }}>
                 <div style={{  color: "#CD912A", cursor: "pointer", fontSize: isMobile ? "14px" : "20px", fontWeight: "bold",  textTransform: "uppercase" }}>USA</div>
                 <div
@@ -39,8 +39,8 @@ const CallToAction = () => {
                   +1-321-421-0740
                 </div>
               </div>
-            </p>
-            <p > 
+            </div>
+            <div > 
               <div style={{ lineHeight: "1.2",  }}>
                 <div style={{  color: "#CD912A", cursor: "pointer", fontSize: isMobile ? "14px" : "20px", fontWeight: "bold",  textTransform: "uppercase" }}>India</div>
                 <div
@@ -51,8 +51,8 @@ const CallToAction = () => {
                 </div>
               </div>
  
-            </p>
-            <p onClick={() => window.open("https://wa.me/6590745876", "_blank")}>
+            </div>
+            <div onClick={() => window.open("https://wa.me/6590745876", "_blank")}>
               <div style={{ lineHeight: "1.2",  }}>
                 <div style={{ color: "#CD912A", cursor: "pointer", fontSize: isMobile ? "14px" : "20px", fontWeight: "bold", textTransform: "uppercase" }}>Singapore</div>
                 <div
@@ -62,7 +62,7 @@ const CallToAction = () => {
                   +65-9074-5876
                 </div>
               </div>
-            </p>
+            </div>
           </div>
         </div>
  

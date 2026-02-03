@@ -70,18 +70,18 @@ const Footer = () => {
         padding: "150px 0 20px 0",
       }}
     >
-{/* Decorative floating shapes */}
-<img
-  src={shape2}
-  alt="shape-1"
-  className="footer-shape shape-one"
-/>
+      {/* Decorative floating shapes */}
+      <img
+        src={shape2}
+        alt="shape-1"
+        className="footer-shape shape-one"
+      />
 
-<img
-  src={shape1}
-  alt="shape-2"
-  className="footer-shape shape-two"
-/>
+      <img
+        src={shape1}
+        alt="shape-2"
+        className="footer-shape shape-two"
+      />
 
 
       <div className="container">
@@ -122,7 +122,7 @@ const Footer = () => {
             </div>
           </div>
 
-                    {/* Quick Links */}
+          {/* Quick Links */}
           <div className="col-md-3 quicklink-responsive">
             <button
               className="accordion-button-quick-link d-md-none"
@@ -148,9 +148,8 @@ const Footer = () => {
               />
             </button>
             <ul
-              className={`footer-links ${
-                isQuickLinksOpen ? "open" : ""
-              } d-md-block`}
+              className={`footer-links ${isQuickLinksOpen ? "open" : ""
+                } d-md-block`}
             >
               <li className="quick-link-for-desktop">
                 <h5 className="footer-heading">Quick Links</h5>
@@ -261,9 +260,8 @@ const Footer = () => {
             </button>
 
             <div
-              className={`accordion-content ${
-                isContactUsOpen ? "open" : ""
-              } d-md-block`}
+              className={`accordion-content ${isContactUsOpen ? "open" : ""
+                } d-md-block`}
             >
               <h5 className="contact-us-heading-for-desktop footer-heading">
                 Contact Us

@@ -34,24 +34,30 @@ const CaseStudyCarousel = () => {
     <section className="case-section py-5">
       <Container>
         {/* 🔹 Section Heading */}
-        <Row className="text-center mb-4">
-          <Col>
-            <p className="section-header-tech">
-              <h6 className="subtitle" >
-                view our portfolio <span className="divider"></span>
-              </h6>
-            </p>
-            <h2 className="title" style={{ textAlign: "left", color: "#fff" }}>
-              Case Study
-            </h2>
-            <p className="image-carousel-content" >
-              We understand, collaborate, and empower! From complex Software
-              Development Service to Seamless Integration, experience how our
-              next-gen IT consulting and software solutions can transform and
-              accelerate your business.
-            </p>
-          </Col>
-        </Row> 
+       <Row className="text-center mb-4">
+  <Col>
+    {/* Section Header */}
+    <div className="section-header-tech">
+      <p className="subtitle">
+        view our portfolio <span className="divider"></span>
+      </p>
+    </div>
+
+    {/* Title */}
+    <p className="title" style={{ textAlign: "left", color: "#fff" }}>
+      Case Study
+    </p>
+
+    {/* Description */}
+    <p className="image-carousel-content">
+      We understand, collaborate, and empower! From complex Software
+      Development Service to Seamless Integration, experience how our
+      next-gen IT consulting and software solutions can transform and
+      accelerate your business.
+    </p>
+  </Col>
+</Row>
+
 
         {/* 🔹 Swiper Carousel */}
         <Swiper

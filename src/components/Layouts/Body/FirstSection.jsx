@@ -1,5 +1,5 @@
 import { Container, Row, Col, Image } from "react-bootstrap";
-import { motion } from "framer-motion";
+
 import "./FirstSection.css";
 
 const clients = [

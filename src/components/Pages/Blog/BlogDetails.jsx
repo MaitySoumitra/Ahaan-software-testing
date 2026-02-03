@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Helmet } from "react-helmet";
 import { FaUser, FaCalendarAlt, FaClock, FaFacebookF, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import { TfiSharethis } from "react-icons/tfi";
 import "./BlogDetails.css";
@@ -127,16 +126,7 @@ const BlogDetails = () => {
       <BlogBanner />
 
       <div className="container py-5 blog-details-container">
-        <Helmet>
-          <title>{blog.title}</title>
-          <meta name="description" content={stripHtml(blog.content).slice(0, 150)} />
-          <meta property="og:title" content={blog.title} />
-          <meta property="og:description" content={stripHtml(blog.content).slice(0, 150)} />
-          <meta property="og:image" content={metaImage} />
-          <meta property="og:url" content={pageUrl} />
-          <meta property="og:type" content="article" />
-          <meta name="twitter:card" content="summary_large_image" />
-        </Helmet>
+      
 
         <div className="row g-4">
           <div className="col-lg-8">

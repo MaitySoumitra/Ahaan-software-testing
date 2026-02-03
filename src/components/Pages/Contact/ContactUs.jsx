@@ -1,11 +1,11 @@
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { FaHome, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 import { FaPhoneVolume } from "react-icons/fa6";
 import { toast, ToastContainer } from "react-toastify";
 import emailjs from "@emailjs/browser";
-import TextField from "@mui/material/TextField";
+
 import "react-toastify/dist/ReactToastify.css";
 import {
   FaFacebookF,
@@ -179,94 +179,91 @@ const onSubmit = async (data) => {
                 <h5 className="contact-text"> GET IN TOUCH</h5>
                 <h2 className="title">Fill The Form Below</h2>
  
-                <form ref={form} onSubmit={handleSubmit(onSubmit)}>
+                <Form ref={form} onSubmit={handleSubmit(onSubmit)}>
                   <Row>
                     <Col md={6}>
-                      <TextField
-                        label="Name"
-                        variant="outlined"
-                        fullWidth
-                        margin="normal"
-                        className="custom-input"
-                        error={!!errors.name}
-                        helperText={errors.name?.message}
-                        {...register("name", { required: "Name is required" })}
-                      />
+                      <Form.Group className="mb-3">
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control
+                          type="text"
+                          placeholder="Enter your name"
+                          isInvalid={!!errors.name}
+                          {...register("name", { required: "Name is required" })}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                          {errors.name?.message}
+                        </Form.Control.Feedback>
+                      </Form.Group>
                     </Col>
+                    
                     <Col md={6}>
-                      <TextField
-                        label="Email ID"
-                        type="email"
-                        variant="outlined"
-                        fullWidth
-                        margin="normal"
-                        className="custom-input"
-                        error={!!errors.email}
-                        helperText={errors.email?.message}
-                        {...register("email", {
-                          required: "Email is required",
-                        })}
-                      />
+                      <Form.Group className="mb-3">
+                        <Form.Label>Email ID</Form.Label>
+                        <Form.Control
+                          type="email"
+                          placeholder="name@example.com"
+                          isInvalid={!!errors.email}
+                          {...register("email", { required: "Email is required" })}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                          {errors.email?.message}
+                        </Form.Control.Feedback>
+                      </Form.Group>
                     </Col>
                   </Row>
- 
+
                   <Row>
                     <Col md={6}>
-                      <TextField
-                        label="Phone No."
-                        type="tel"
-                        variant="outlined"
-                        fullWidth
-                        margin="normal"
-                        className="custom-input"
-                        error={!!errors.phone}
-                        helperText={errors.phone?.message}
-                        inputProps={{
-                          pattern: "[0-9]*",
-                          inputMode: "numeric",
-                          onKeyPress: handleKeyPress,
-                        }}
-                        {...register("phone", {
-                          required: "Phone number is required",
-                          pattern: {
-                            value: /^[0-9]{7,15}$/,
-                            message: "Please enter a valid phone number",
-                          },
-                          onChange: handlePhoneInput,
-                        })}
-                      />
+                      <Form.Group className="mb-3">
+                        <Form.Label>Phone No.</Form.Label>
+                        <Form.Control
+                          type="tel"
+                          placeholder="Numbers only"
+                          isInvalid={!!errors.phone}
+                          {...register("phone", {
+                            required: "Phone number is required",
+                            pattern: {
+                              value: /^[0-9]{7,15}$/,
+                              message: "Please enter a valid phone number",
+                            },
+                            onChange: handlePhoneInput,
+                          })}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                          {errors.phone?.message}
+                        </Form.Control.Feedback>
+                      </Form.Group>
                     </Col>
+                    
                     <Col md={6}>
-                      <TextField
-                        label="Website"
-                        variant="outlined"
-                        fullWidth
-                        margin="normal"
-                        className="custom-input"
-                        {...register("website")}
-                      />
+                      <Form.Group className="mb-3">
+                        <Form.Label>Website</Form.Label>
+                        <Form.Control
+                          type="text"
+                          placeholder="https://..."
+                          {...register("website")}
+                        />
+                      </Form.Group>
                     </Col>
                   </Row>
- 
-                  <TextField
-                    label="Drop Your Message"
-                    variant="outlined"
-                    fullWidth
-                    multiline
-                    rows={4}
-                    margin="normal"
-                    className="custom-input"
-                    error={!!errors.message}
-                    helperText={errors.message?.message}
-                    {...register("message", {
-                      required: "Message is required",
-                    })}
-                  />
- 
+
+                  <Form.Group className="mb-3">
+                    <Form.Label>Drop Your Message</Form.Label>
+                    <Form.Control
+                      as="textarea"
+                      rows={4}
+                      isInvalid={!!errors.message}
+                      {...register("message", { required: "Message is required" })}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      {errors.message?.message}
+                    </Form.Control.Feedback>
+                  </Form.Group>
+
                   <button type="submit" className="newsletter-button contact-us-submit-btn mt-3">
                     <span>Submit Now</span>
                   </button>
-                </form>
+                </Form>
               </Col>
             </Row>
           </Col>

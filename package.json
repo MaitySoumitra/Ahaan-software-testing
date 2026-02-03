@@ -12,18 +12,12 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
     "@fortawesome/fontawesome-free": "^6.7.2",
     "@googlemaps/js-api-loader": "^1.16.8",
     "@lottiefiles/dotlottie-react": "^0.17.6",
-    "@mui/material": "^7.1.0",
-    "@react-three/drei": "^10.7.6",
-    "@react-three/fiber": "^9.4.0",
     "axios": "^1.9.0",
     "bootstrap": "^5.3.5",
     "framer-motion": "^12.30.0",
-    "gsap": "^3.13.0",
     "leaflet": "^1.9.4",
     "leaflet.markercluster": "^1.5.3",
     "leaflet.smooth_marker_bouncing": "^3.1.1",
@@ -36,7 +30,6 @@
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.2.0",
     "react-toastify": "^11.0.5",
-    "reactstrap": "^9.2.3",
     "swiper": "^12.0.3"
   },
   "devDependencies": {

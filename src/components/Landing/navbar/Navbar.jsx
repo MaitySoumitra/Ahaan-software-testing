@@ -6,7 +6,7 @@ import {
   NavItem,
   Button,
   Container,
-} from "reactstrap";
+} from "react-bootstrap";
 import { BiChat } from "react-icons/bi"; // <-- import React icon here
 import "./Navbar.css";
 import PopUp from "../popUp/PopUp";

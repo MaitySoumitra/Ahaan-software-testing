@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaAngleDown } from "react-icons/fa";
-import TextField from "@mui/material/TextField";
+import {Form} from 'react-bootstrap'
 import emailjs from "@emailjs/browser";
 import { useForm } from "react-hook-form";
 import { BsCheckLg } from "react-icons/bs";
@@ -23,7 +23,7 @@ const Footer = () => {
   const [isContactUsOpen, setIsContactUsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isPagesOpen, setIsPagesOpen] = useState(false);
-
+const form = useRef();
   const {
     register,
     handleSubmit,
@@ -99,27 +99,32 @@ const Footer = () => {
                 offers.
               </p>
             </div>
-            <div className="">
-              <TextField
-                label="Email ID"
-                type="email"
-                variant="outlined"
-                fullWidth
-                margin="normal"
-                className="custom-input"
-                error={!!errors.email}
-                helperText={errors.email?.message}
-                {...register("email", {
-                  required: "Email is required",
-                })}
-                sx={{ "& .MuiInputBase-input": { color: "white" } }}
-              />
+           <Form ref={form} onSubmit={handleSubmit(onSubmit)}>
+              <Form.Group className="mb-2">
+                <Form.Control
+                  type="email"
+                  placeholder="Email ID"
+                  className="custom-input-bootstrap"
+                  isInvalid={!!errors.email}
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: /^\S+@\S+$/i,
+                      message: "Invalid email address",
+                    },
+                  })}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {errors.email?.message}
+                </Form.Control.Feedback>
+              </Form.Group>
+              
               <div className="d-flex justify-content-start flex-col">
-                <button className="newsletter-button">
+                <button type="submit" className="newsletter-button">
                   <span>Submit</span>
                 </button>
               </div>
-            </div>
+            </Form>
           </div>
 
           {/* Quick Links */}

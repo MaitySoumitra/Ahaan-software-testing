@@ -78,11 +78,9 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setLoading(false);
-    }, 2500);
-    return () => clearTimeout(timeout);
-  }, []);
+  // Instead of a timeout, just set loading to false on mount
+  setLoading(false);
+}, []);
   useEffect(() => {
   fetch("https://ahaan-software-1.onrender.com/api/visitor/count")
     .then(res => res.json())

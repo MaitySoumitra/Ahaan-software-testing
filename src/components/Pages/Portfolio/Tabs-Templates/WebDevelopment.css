@@ -1,0 +1,81 @@
+.webdev-columns {
+  display: flex;
+  gap: 20px; /* gap between columns */
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #ffffff;
+  flex-wrap: nowrap; /* prevent wrapping */
+}
+
+/* Swiper container */
+.webdev-gallery-swiper {
+  width: 550px;  /* keep your fixed width */
+  height: 810px; /* keep fixed height */
+  overflow: hidden;
+}
+
+/* Slides gap */
+.webdev-slide {
+  margin-bottom: 15px;
+}
+
+/* Images */
+.webdev-gallery-image {
+  width: 100%;
+  height: 400px;
+  border-radius: 2px;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Offset columns */
+.offset-swiper .swiper-wrapper {
+  transform: translateY(-25%);
+}
+
+/* Tablet: show only first 3 columns */
+@media (max-width: 992px) {
+  .webdev-gallery-swiper:nth-child(4) {
+    display: none;
+  }
+  .webdev-slide {
+  margin-bottom: 5px;
+}
+.webdev-columns {
+  gap: 10px; /* reduce gap between columns */
+}
+}
+/* Mobile: show only first 2 columns */
+@media (max-width: 768px) {
+  .webdev-gallery-swiper:nth-child(3),
+  .webdev-gallery-swiper:nth-child(4) {
+    display: none;
+  }
+    .webdev-slide {
+  margin-bottom: 5px;
+}
+.webdev-columns {
+  gap: 10px; /* reduce gap between columns */
+}
+.webdev-gallery-swiper{
+  height:510px;
+}
+.webdev-gallery-image {
+  height: 250px;  
+}
+}
+.portfolio-view-all-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: #e4ad07;
+  color: #000000;
+  font-weight: 600;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.portfolio-view-all-btn:hover {
+  background: #f3be20;
+}

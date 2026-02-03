@@ -1,0 +1,192 @@
+/* ========================  Grid.css  ======================== */
+.service-section {
+  font-family: "Outfit", sans-serif;
+}
+
+/* =============== Animated Heading =============== */
+.service-title.animated-heading {
+  font-size: 3rem !important;
+  font-weight: 900 !important;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--main-color),
+    #1d1d1d 40%,
+    var(--main-color)
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s infinite linear;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* =============== Icon Bubble =============== */
+.icon-bubble {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(6px);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+  padding: 0 !important;
+}
+
+.icon-bubble:hover {
+  transform: scale(1.15);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.service-tech-icon {
+  width: 40px;
+  height: auto;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  padding: 0 !important;
+}
+
+.icon-bubble:hover .tech-icon {
+  transform: scale(1.25);
+}
+
+/* =============== Text Styles =============== */
+.tech-stack {
+  font-weight: 600;
+  color: #000;
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+.tech-stack .dot {
+  color: #888;
+  margin: 0 6px;
+}
+.service-description {
+  color: #666;
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+/* =============== Button & Icon Row =============== */
+.button-icon-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.explore-btn {
+  min-width: 140px;               /* keeps button size stable */
+  height: 42px;
+  padding: 7px 25px !important;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.explore-btn:hover {
+  background: var(--main-color) !important;
+}
+
+/* Icons container – always centered with button */
+.service-icons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.service-image-box {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px 120px;
+  box-shadow: 0 2px 25px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  transition: transform 0.4s ease;
+  animation: waveRadius 5s ease-in-out infinite;
+}
+
+.service-image-box:hover {
+  transform: translateY(-5px);
+}
+
+/* 🌀 Inside image follows same wavy effect */
+.service-image-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px 120px;
+  animation: waveRadius 5s ease-in-out infinite;
+  transition: border-radius 0.5s ease;
+}
+
+/* 💧 Stronger & deeper wave motion */
+@keyframes waveRadius {
+  0% {
+    border-radius: 20px 120px;
+  }
+  20% {
+    border-radius: 35px 105px;
+  }
+  40% {
+    border-radius: 50px 90px;
+  }
+  60% {
+    border-radius: 65px 75px;
+  }
+  80% {
+    border-radius: 40px 100px;
+  }
+  100% {
+    border-radius: 20px 120px;
+  }
+}
+
+
+
+/* =============== Image Hover Effect =============== */
+.service-image-box {
+  transition: transform 0.3s ease;
+}
+.service-image-box:hover {
+  transform: scale(1.03);
+}
+
+
+
+/* =============== Responsive Fixes =============== */
+@media (max-width: 768px) {
+  .service-title.animated-heading {
+    font-size: 1.5rem !important;
+  }
+  .tech-stack,
+  .service-description {
+    font-size: 13px !important;
+  }
+  .button-icon-row {
+    flex-direction: column;
+    align-items: center;
+  }
+  .service-icons {
+    justify-content: center;
+  }
+  .service-icons{
+    font-size: 15px !important;
+  }
+  .service-image-box {
+    margin: 20px;
+  }
+}

@@ -1,0 +1,98 @@
+/* ============ Section Styling ============ */
+.connect-section {
+  background: #181818;
+  color: #fff;
+  font-family: "Outfit", sans-serif;
+  padding-top: 100px !important;
+  padding-bottom: 100px !important;
+}
+
+
+/* ============ Left Side ============ */
+.connect-left .connect-subtitle {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #b0b3ff;
+}
+
+.whychooseus-label {
+
+  font-weight: 800;
+  color: #fff;
+
+}
+
+/* ============ Form ============ */
+.connect-form {
+  background: transparent;
+}
+
+.connect-input-group {
+  margin-bottom: 1.5rem;
+}
+
+.connect-input,
+.connect-select {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid #fff !important;
+  border-radius: 0 !important;
+  color: #fff !important;
+  padding: 10px 0 !important;
+  font-size: 1rem !important;
+}
+
+.connect-input:focus,
+.connect-select:focus {
+  border-bottom: 1px solid #ffbf00 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  color: #fff !important;
+}
+
+/* White Placeholder */
+.connect-input::placeholder,
+.connect-select option {
+  color: #fff !important;
+  opacity: 0.8;
+}
+
+/* Error Text */
+.error-text {
+  color: #ffbf00;
+  font-size: 0.85rem;
+  margin-top: 5px;
+  display: block;
+}
+
+/* Button */
+.connect-submit-btn {
+  background-color: #c5940200 !important;
+  border: 1px solid #c59402 !important;
+  color: #c59402 !important;
+  padding: 10px 30px !important;
+  border-radius: 10px !important;
+  font-weight: 600;
+  transition: 0.3s ease;
+  width: 30% !important;
+}
+
+.connect-submit-btn:hover {
+  background-color: #ffbf00 !important;
+  border-color: #ffbf00 !important;
+  color: #000 !important;
+}
+/* Fix select dropdown background */
+.connect-select {
+  background-color: #00000000 !important;
+  color: #fff !important;
+  border: none !important;
+  border-bottom: 1px solid #fff !important;
+  border-radius: 0 !important;
+  padding: 10px 0 !important;
+}
+
+.connect-select option {
+  background-color: #181818 !important;
+  color: #fff !important;
+}

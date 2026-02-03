@@ -1,0 +1,27 @@
+.map-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.map-container {
+  width: 100%;
+  height: 60vh; /* take 70% of viewport height */
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Tablet view */
+@media (max-width: 1024px) {
+  .map-container {
+    height: 60vh;
+  }
+}
+
+/* Phone view */
+@media (max-width: 768px) {
+  .map-container {
+    height: 50vh;
+  }
+}

@@ -1,0 +1,266 @@
+/* ========================= */
+/* TEAM CAROUSEL & CARD AREA */
+/* ========================= */
+
+.team-carousel-section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  font-family: 'Outfit', sans-serif;
+}
+
+.team-carousel-section .title {
+  color: #000;
+  font-size: 35px;
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+  margin-bottom: 10px;
+}
+
+.team-carousel-section p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+/* Carousel Card */
+.team-carousel-card {
+  background: #ffffff;
+  border-radius: 15px;
+
+  transition: all 0.3s ease-in-out;
+  padding: 25px 15px;
+  cursor: pointer;
+}
+
+.team-carousel-card:hover {
+  transform: translateY(-15px);
+  
+}
+
+.team-carousel-img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 25px;
+  object-fit: cover;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.team-carousel-card:hover .team-carousel-img {
+  transform: scale(1.05);
+}
+
+.team-carousel-card h5 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 5px;
+}
+
+.team-carousel-card p {
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 0;
+}
+
+/* Swiper Pagination/Scrollbar Hidden */
+.swiper-pagination,
+.swiper-scrollbar {
+  display: none !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .team-carousel-img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .team-carousel-card {
+    padding: 20px;
+  }
+
+  .team-carousel-card h5 {
+    font-size: 16px;
+  }
+
+  .team-carousel-card p {
+    font-size: 14px;
+  }
+}
+
+/* ======================= */
+/* KEEPING YOUR MODAL AS IS */
+/* ======================= */
+
+.modal.show .modal-dialog {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+/* Optional: constrain width */
+.modal-dialog {
+  max-width: 500px !important;
+  width: 70% !important;
+}
+
+/* Modal Content */
+.modal-content {
+  border-radius: 15px;
+  border: 2px solid #C7892B;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  font-family: 'Outfit', sans-serif;
+  text-align: center;
+  margin: auto;
+}
+
+/* Modal Header */
+.modal-header {
+  background-color: #fff;
+  border-bottom: 1px solid #dee2e6;
+  padding: 0px 20px;
+}
+
+.modal-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #000;
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Modal Body */
+.modal-body {
+  padding: 30px 20px;
+  font-size: 16px;
+  color: #333;
+}
+
+.modal-body h5 {
+  color: #C7892B;
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+.modal-body p {
+  font-size: 16px;
+  color: #000000;
+  line-height: 1.6;
+}
+
+.modal-body img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+/* Modal Footer */
+.modal-footer {
+  border-top: 1px solid #dee2e6;
+  padding: 10px 20px;
+  justify-content: center;
+}
+
+.modal-footer .btn-secondary {
+  background-color: #C7892B;
+  border: none;
+  font-family: 'Outfit', sans-serif;
+}
+
+.modal-footer .btn-secondary:hover {
+  background-color: #a57022;
+}
+
+/* Optional: dark overlay */
+.modal-backdrop.show {
+  opacity: 0.8;
+}
+
+/* ======================= */
+/* RESPONSIVE MODAL FIXES  */
+/* ======================= */
+
+@media (max-width: 576px) {
+  .team-carousel-section {
+    padding-top: 15rem !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .container.py-5.team-sections {
+    padding-top: 20rem !important;
+  }
+
+  .modal-body {
+    padding: 10px 10px;
+  }
+
+  .modal-body img {
+    width: 90px !important;
+    height: 90px !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+      0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .modal-title {
+    font-size: 20px !important;
+  }
+
+  .modal-body p {
+    font-size: 13px !important;
+    line-height: 1.5;
+  }
+
+  .modal-footer {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .modal-footer .btn-secondary {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .modal-dialog {
+    width: 95% !important;
+    max-width: 95% !important;
+    margin: 20px auto;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .modal-dialog {
+    width: 85% !important;
+    max-width: 85% !important;
+    margin: 20px auto;
+  }
+
+  .modal-body {
+    padding: 25px 15px;
+  }
+
+  .modal-body img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .modal-title {
+    font-size: 22px;
+  }
+
+  .modal-body p {
+    font-size: 15px;
+  }
+
+  .modal-footer .btn-secondary {
+    width: auto;
+    padding: 8px 20px;
+  }
+}

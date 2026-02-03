@@ -1,0 +1,260 @@
+/* Default navbar look */
+.header-main {
+  background-color: transparent !important;
+  transition: background-color 0.6s ease-in-out, box-shadow 0.6s ease-in-out;
+  position: sticky; /* keeps it fixed on scroll */
+  top: 0;
+  z-index: 1000;
+}
+
+/* When scrolled down */
+.header-main.scrolled {
+  background-color: #000 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Optional: make text/logo white when navbar is black */
+.header-main.scrolled .nav-link,
+.header-main.scrolled .navbar-brand,
+.header-main.scrolled .get-quote-btn {
+  color: #fff !important;
+  transition: color 0.4s ease-in-out;
+}
+
+
+
+
+
+.asc-logo {
+  height: 45px;
+  margin:0 !important;
+}
+.asc-header {
+  display: flex;
+  align-items: center;
+}
+nav.navbar.navbar-expand-lg.bg-white.py-4 {
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+.desktop-nav-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+  font-size: 18px;
+  color: #c5c5c5;
+  font-weight: 500;
+  gap: 3rem;
+  font-family: outfit;
+}
+
+.get-quote-btn {
+  position: relative;
+  display: inline-block;
+  background: #000;
+  color: #c78a2b;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 15px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-family: outfit;
+  overflow: hidden;
+  transition: color 0.3s ease, background 0.3s ease;
+  z-index: 1;
+}
+
+/* Gradient border animation */
+.get-quote-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px; 
+  border-radius: 30px;
+  background: linear-gradient(45deg, #ffffff, #c78a2b, #ffffff, #c78a2b);
+  background-size: 300% 300%;
+  animation: borderFlow 3s linear infinite;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+}
+
+/* On hover - invert background and text color */
+/* .get-quote-btn:hover {
+  background: linear-gradient(90deg, #c78a2b, #fff);
+  color: #000;
+} */
+
+/* Border animation keyframes */
+@keyframes borderFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.header-left-side {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+/* .get-quote-btn:hover {
+  background-color: #cc9231;
+  color: #000;
+} */
+.get-quote-container-1 {
+  display: none;
+}
+.asc-header-toggle {
+  display: none;
+}
+
+/* Basic styling for the mobile sidebar */
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  right: -250px; /* Sidebar is hidden off the screen */
+  width: 250px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.social-links {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: auto;
+}
+
+.social-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 20px;
+}
+
+hr {
+  margin: 20px 0;
+  border: 0.5px solid #ccc;
+}
+
+/* Mobile Button Styling */
+.asc-header-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 2000;
+}
+
+/* Show sidebar when button is clicked */
+.mobile-sidebar.open {
+  right: 0; /* Slide the sidebar in */
+}
+
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+  .nav-links a,
+  .social-links a {
+    font-size: 18px;
+  }
+  .asc-logo {
+    height: 35px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .desktop-nav-menu {
+    gap: 1.2rem;
+    font-size: 14px;
+  }
+ 
+}
+@media (max-width: 769px) {
+  .desktop-nav-menu {
+    gap: 1.2rem;
+    font-size: 14px;
+  }
+  .get-quote-container-1 {
+    display: block;
+  }
+  .get-quote-container-1 a {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 10px 25px;
+  }
+  .asc-header-toggle {
+    display: block;
+    padding: 0;
+    border: none;
+    background: transparent;
+  }
+  .get-quote-container-2 {
+    display: none;
+  }
+  .desktop-nav-menu {
+    display: none !important;
+  }
+}
+@media (max-width: 450px) {
+  .phone-get-qt {
+    padding: 6px;
+    background-color: #000;
+    color: #c78a2b;
+    border-radius: 50%;
+  }
+}
+
+.nav-links a:hover,
+.desktop-nav-menu a:hover {
+  color: #c78a2b;
+}
+
+.nav-links a.active,
+.desktop-nav-menu a.active {
+  color: #c78a2b;
+  position: relative;
+}
+
+.nav-links a.active::after,
+.desktop-nav-menu a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #c78a2b;
+}

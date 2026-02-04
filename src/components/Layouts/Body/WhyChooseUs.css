@@ -22,6 +22,11 @@
   animation: gradientFlow 4s linear infinite;
   text-align: center;
 }
+@media (max-width: 991px) {
+  .whychooseus-label {
+    font-size: 1.5rem;
+  }
+}
  
 @keyframes gradientFlow {
   0% {

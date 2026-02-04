@@ -18,9 +18,7 @@ const CallToAction = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
  
-  const handleGoToContact = () => {
-    navigate('/contact');
-  };
+  
  
   return (
     <div className="second-banner-req-call">

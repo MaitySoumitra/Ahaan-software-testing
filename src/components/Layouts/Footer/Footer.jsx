@@ -15,8 +15,8 @@ import {
 } from "react-icons/fa";
 import { FaFileAlt, FaTruck, FaGavel } from "react-icons/fa";
 import "./Footer.css";
-import shape1 from "../../../assets/privacy/3dicons1.png";
-import shape2 from "../../../assets/privacy/3dicons3.png";
+import shape1 from "/3dicons1.png";
+import shape2 from "/3dicons3.png";
 
 const Footer = () => {
   const [isQuickLinksOpen, setIsQuickLinksOpen] = useState(false);

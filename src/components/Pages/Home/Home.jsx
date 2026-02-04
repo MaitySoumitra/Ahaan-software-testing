@@ -1,35 +1,51 @@
-import React from "react";
-import FirstSection from "../../Layouts/Body/FirstSection";
-import ThirdSection from "../../Layouts/Body/ThirdSection";
-import WhyChooseUs from "../../Layouts/Body/WhyChooseUs";
-import TotalProject from "../../Layouts/Body/TotalProject";
-import OurProcess from "../../Layouts/Body/OurProcess";
-import SecondBanner from "../../Layouts/Body/SecondBanner";
-import ImageCarousel from "../../Layouts/Body/ImageCarousel";
-import TestimonialCarousel from "../../Landing/testimonials/Testimonials";
+import React, { lazy, Suspense } from "react";
+
+// 1. KEEP THESE AS STANDARD IMPORTS (Above the fold)
 import HeroBanner from "../../Layouts/Body/HeroBanner";
 import WhoWeAreSection from "../../Layouts/Body/WhoWeAreSection";
-import ServicesSection from "../Portfolio/ServicesSection";
-import CaseStudyCarousel from "../../Layouts/Body/CaseStudyCarousel";
-import ConnectSection from "../../Layouts/Body/ConnectSection";
 
+// 2. LAZY LOAD THE REST (Below the fold)
+const ServicesSection = lazy(() => import("../Portfolio/ServicesSection"));
+const ThirdSection = lazy(() => import("../../Layouts/Body/ThirdSection"));
+const TotalProject = lazy(() => import("../../Layouts/Body/TotalProject"));
+const FirstSection = lazy(() => import("../../Layouts/Body/FirstSection"));
+const WhyChooseUs = lazy(() => import("../../Layouts/Body/WhyChooseUs"));
+const OurProcess = lazy(() => import("../../Layouts/Body/OurProcess"));
+const ConnectSection = lazy(() => import("../../Layouts/Body/ConnectSection"));
+const ImageCarousel = lazy(() => import("../../Layouts/Body/ImageCarousel"));
+const CaseStudyCarousel = lazy(() => import("../../Layouts/Body/CaseStudyCarousel"));
+const TestimonialCarousel = lazy(() => import("../../Landing/testimonials/Testimonials"));
+const SecondBanner = lazy(() => import("../../Layouts/Body/SecondBanner"));
+import './Home.css'
 const Home = () => {
   return (
     <div>
-     
+      {/* These load instantly */}
       <HeroBanner />
       <WhoWeAreSection />
-      <ServicesSection />
-      <ThirdSection />
-      <TotalProject />
-      <FirstSection />
-      <WhyChooseUs />
-      <OurProcess />
-      <ConnectSection />
-      <ImageCarousel />
-      <CaseStudyCarousel />
-      <TestimonialCarousel />
-      <SecondBanner />
+
+      {/* These load as the user starts to interact/scroll */}
+      <Suspense fallback={
+  <div className="d-flex justify-content-center align-items-center py-5">
+    <div className="loader-dots">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+}>
+        <ServicesSection />
+        <ThirdSection />
+        <TotalProject />
+        <FirstSection />
+        <WhyChooseUs />
+        <OurProcess />
+        <ConnectSection />
+        <ImageCarousel />
+        <CaseStudyCarousel />
+        <TestimonialCarousel />
+        <SecondBanner />
+      </Suspense>
     </div>
   );
 };

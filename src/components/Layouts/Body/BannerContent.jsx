@@ -4,7 +4,6 @@ import {
   FiFigma,
   FiLayout,
   FiSmartphone,
-  FiShoppingCart,
   FiCode,
   FiGlobe,
 } from "react-icons/fi";

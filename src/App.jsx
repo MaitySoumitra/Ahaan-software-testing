@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import Header from "./components/Layouts/Header/Header";
-import TopHeader from "./components/Layouts/Header/TopHeader";
+
 import Footer from "./components/Layouts/Footer/Footer";
 const Home = React.lazy(() => import("./components/Pages/Home/Home"));
 const About = React.lazy(() => import("./components/Pages/AboutUs/About"));
@@ -39,13 +39,10 @@ const AppContent = () => {
  
   return (
     <>
-      {/* {showPopup && <WindowPopup onClose={() => setShowPopup(false)} />} */}
-      {/* <CustomCursor /> */}
-
-      {/* Show Header and Footer only when not in excluded routes */}
+  
       {!hideHeaderFooterRoutes.includes(location.pathname) && (
         <>
-          {/* <TopHeader /> */}
+         
           <Header />
         </>
       )}

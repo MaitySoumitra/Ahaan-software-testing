@@ -47,7 +47,7 @@ const Cms = () => {
 
       {/* Center Laptop */}
       <div className="laptop-center">
-        <img src="https://ahaanmedia.com/asc/All/Laptop.gif" alt="Laptop" className="laptop-image" />
+        <img src="/laptop.webp" alt="Laptop" className="laptop-image" />
       </div>
       {/* Modal */}
       {selectedCube && (

@@ -9,7 +9,7 @@ import {
 import Header from "./components/Layouts/Header/Header";
 import TopHeader from "./components/Layouts/Header/TopHeader";
 import Footer from "./components/Layouts/Footer/Footer";
-import Home from './components/Pages/Home/Home'
+const Home = React.lazy(() => import("./components/Pages/Home/Home"));
 const About = React.lazy(() => import("./components/Pages/AboutUs/About"));
 const Service = React.lazy(() => import("./components/Pages/Service/Service"));
 const Industry = React.lazy(() => import("./components/Pages/Industry/Industry"));

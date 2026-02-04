@@ -1,8 +1,25 @@
-.sidebar-content {
-  padding: 80px 20px 20px 20px;
+.sidebar-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 250px;
+  z-index: 999;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 40px 0 0 40px;
   
+  /* ANIMATION LOGIC */
+  transform: translateX(100%); /* Start hidden off-screen to the right */
+  transition: transform 0.4s ease-in-out; /* Smooth slide effect */
 }
 
+/* When the "open" class is added, move it back to its original position */
+.sidebar-container.open {
+  transform: translateX(0);
+}
+
+/* Rest of your existing CSS... */
 .nav-links {
   display: flex;
   flex-direction: column;
@@ -19,18 +36,14 @@
   line-height: 60px;
   border-bottom: 1px solid #ffd089;
 }
-.nav-links a.active::after, .desktop-nav-menu a.active::after
-/* Hover color */
+
 .nav-links a:hover {
   color: #007bff;
 }
 
-/* Active link styling */
 .nav-links a.active {
   font-weight: 700;
-  /* padding: 8px 0px 8px 2px; */
   border: none !important;
-  
 }
 
 .social-links {
@@ -45,7 +58,10 @@
   background-color: #000000;
   padding: 10px;
   border-radius: 50px;
-  font-size: 12px !important ;
+  font-size: 12px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .social-links a:hover {

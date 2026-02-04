@@ -16,7 +16,6 @@
     "@lottiefiles/dotlottie-react": "^0.17.6",
     "axios": "^1.9.0",
     "bootstrap": "^5.3.5",
-    "framer-motion": "^12.30.0",
     "leaflet": "^1.9.4",
     "leaflet.markercluster": "^1.5.3",
     "leaflet.smooth_marker_bouncing": "^3.1.1",

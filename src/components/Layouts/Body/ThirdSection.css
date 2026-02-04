@@ -39,7 +39,6 @@
 /* Main heading (Our Technology Use) */
 .title {
   font-weight: 700;
-  font-size: 50px !important;
   background: linear-gradient(90deg, #000000, #cfa74a, #000000);
   background-size: 300%;
   -webkit-background-clip: text;

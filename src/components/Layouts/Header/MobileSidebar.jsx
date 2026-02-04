@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { BsGithub } from "react-icons/bs";
@@ -33,24 +32,20 @@ const MobileSidebar = ({ isOpen, setSidebarOpen, toggleButtonRef }) => {
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
     window.addEventListener("scroll", handleScroll);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
       window.removeEventListener("scroll", handleScroll);
     };
   }, [isOpen, setSidebarOpen, toggleButtonRef]);
 
   return (
-    <motion.nav
+    <nav
       ref={sidebarRef}
-      initial={{ x: "100%" }}
-      animate={isOpen ? { x: 0 } : { x: "100%" }}
-      exit={{ x: "0" }}
-      transition={{ type: "tween", duration: 0.4 }}
-      style={styles.sidebarContainer}
-      className="sidebar-container"
+      // The class "open" will trigger the slide-in transition
+      className={`sidebar-container ${isOpen ? "open" : ""}`}
     >
       <div style={styles.contentWrapper} className="content-wrapper">
         <div style={styles.navLinks} className="nav-links">
@@ -97,7 +92,7 @@ const MobileSidebar = ({ isOpen, setSidebarOpen, toggleButtonRef }) => {
             <PiFactoryFill style={{ marginRight: "8px", fontSize: "22px" }} />{" "}
             Solutions
           </NavLink>
-           <NavLink
+          <NavLink
             to="/blog"
             className={({ isActive }) => (isActive ? "active" : "")}
             onClick={() => setSidebarOpen(false)}
@@ -138,22 +133,12 @@ const MobileSidebar = ({ isOpen, setSidebarOpen, toggleButtonRef }) => {
           </a>
         </div>
       </div>
-    </motion.nav>
+    </nav>
   );
 };
 
+// Kept your style object for layout, but moved animation logic to CSS
 const styles = {
-  sidebarContainer: {
-    position: "fixed",
-    top: 0,
-    right: 0,
-    bottom: 0,
-    width: 250,
-    zIndex: 999,
-    backgroundColor: "#fff",
-    boxShadow: "0 0 10px rgba(0,0,0,0.2)",
-    borderRadius: "40px 0 0 40px",
-  },
   contentWrapper: {
     paddingTop: 80,
     paddingLeft: 20,

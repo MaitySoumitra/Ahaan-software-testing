@@ -10,7 +10,7 @@ export default defineConfig({
           'lottie-vendor': ['@lottiefiles/dotlottie-react'],
           'bootstrap-vendor': ['bootstrap', 'react-bootstrap'],
           'map-vendor': ['leaflet', 'leaflet.markercluster'],
-          'vendors': ['axios', 'react-router-dom'],
+          'vendors': ['axios', 'react-router-dom', 'swiper'],
         },
       },
     },

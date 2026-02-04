@@ -1,6 +1,8 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./CaseStudyCarousel.css";
 import img1 from "../../../assets/texture/1.jpg";
@@ -15,50 +17,106 @@ import img9 from "../../../assets/texture/9.jpg";
 import img10 from "../../../assets/texture/10.jpg";
 
 const CaseStudyCarousel = () => {
-  const slides = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
+  const slides = [
+    { img: img1, link: "#" },
+    { img: img2, link: "#" },
+    { img: img3, link: "#" },
+    { img: img4, link: "#" },
+    { img: img5, link: "#" },
+    { img: img6, link: "#" },
+    { img: img7, link: "#" },
+    { img: img8, link: "#" },
+    { img: img9, link: "#" },
+    { img: img10, link: "#" },
+  ];
 
   return (
-    <section className="case-section mb-2 mb-lg-5 py-2 py-lg-5">
+    <section className="case-section py-5">
       <Container>
-        <Row className=" text-center mb-4">
-          <Col>
-            <div className="section-header-tech">
-              <p className="subtitle">
-                view our portfolio <span className="divider"></span>
-              </p>
-            </div>
-            <p className="title" style={{ textAlign: "left", color: "#fff" }}>
-              Case Study
-            </p>
-            <p className="text-start">
-              We understand, collaborate, and empower! experience how our
-              next-gen IT consulting can transform your business.
-            </p>
-          </Col>
-        </Row>
+        {/* 🔹 Section Heading */}
+       <Row className="text-center mb-4">
+  <Col>
+    {/* Section Header */}
+    <div className="section-header-tech">
+      <p className="subtitle">
+        view our portfolio <span className="divider"></span>
+      </p>
+    </div>
 
-        {/* 🔹 Infinite Marquee Wrapper */}
-        <div className="marquee-wrapper">
-          <div className="marquee-content">
-            {/* Render twice for seamless looping */}
-            {[...slides, ...slides].map((img, index) => (
-              <div
-                className="case-card"
-                key={index}
-                style={{ marginTop: index % 2 === 0 ? "40px" : "0px" }}
+    {/* Title */}
+    <p className="title" style={{ textAlign: "left", color: "#fff" }}>
+      Case Study
+    </p>
+
+    {/* Description */}
+    <p className="image-carousel-content">
+      We understand, collaborate, and empower! From complex Software
+      Development Service to Seamless Integration, experience how our
+      next-gen IT consulting and software solutions can transform and
+      accelerate your business.
+    </p>
+  </Col>
+</Row>
+
+
+        {/* 🔹 Swiper Carousel */}
+        <Swiper
+          modules={[Autoplay]}
+          slidesPerView={5}
+          spaceBetween={30}
+          loop={true}
+          freeMode={true}
+          speed={4500}
+          autoplay={{
+            delay: 0,
+            disableOnInteraction: false,
+          }}
+          grabCursor={true}
+          allowTouchMove={false}
+          breakpoints={{
+            320: { slidesPerView: 1.3, spaceBetween: 15 },
+            768: { slidesPerView: 2.3, spaceBetween: 25 },
+            992: { slidesPerView: 3.3, spaceBetween: 30 },
+            1200: { slidesPerView: 5, spaceBetween: 40 },
+          }}
+          className="case-swiper"
+        >
+          {slides.map((slide, index) => (
+            <SwiperSlide key={index}>
+              <a
+                href={slide.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-decoration-none"
               >
-                <img src={img} alt={`Case ${index}`} />
-              </div>
-            ))}
-          </div>
-        </div>
+                <div
+                  className="case-card"
+                  style={{
+                    marginTop: index % 2 === 0 ? "40px" : "0px",
+                  }}
+                >
+                  <img src={slide.img} alt={`Case ${index + 1}`} />
+                </div>
+              </a>
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
-        
-          <a href="/portfolio" className=" newsletter-button"> <span>View All</span></a>
-        
+        {/* 🔹 Right-Aligned Button */}
+        <div className="view-all-btn">
+          <a href="/portfolio">
+            View All →
+          </a>
+        </div>
       </Container>
 
-    
+      {/* 🔹 Bottom Wave Divider */}
+      <section className="wave-section">
+        <div className="wave wave1"></div>
+        <div className="wave wave2"></div>
+        <div className="wave wave3"></div>
+        <div className="wave wave4"></div>
+      </section>
     </section>
   );
 };

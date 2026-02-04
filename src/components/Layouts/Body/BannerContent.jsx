@@ -84,29 +84,46 @@ const BannerContent = () => {
   const [fadeSubtitle, setFadeSubtitle] = useState(false);
   const [showIcons, setShowIcons] = useState(false);
 
-  useEffect(() => {
-    const currentText = textPairs[index].title;
-    const typingSpeed = isDeleting ? 60 : 100;
+useEffect(() => {
+  const currentText = textPairs[index].title;
+  
+  // 1. IMMEDIATE PAINT: On the very first render, show the subtitle immediately.
+  // This satisfies the LCP check without waiting 1.5s for the title to type.
+  if (index === 0 && !isDeleting) {
+    setFadeSubtitle(true);
+    // Optional: Show icons slightly faster too
+    if (!showIcons) setShowIcons(true);
+  }
 
-    const timer = setTimeout(() => {
-      if (!isDeleting && displayText.length < currentText.length) {
-        setDisplayText(currentText.substring(0, displayText.length + 1));
-      } else if (isDeleting && displayText.length > 0) {
-        setDisplayText(currentText.substring(0, displayText.length - 1));
-      } else if (!isDeleting && displayText.length === currentText.length) {
+  const typingSpeed = isDeleting ? 40 : 80; // Slightly faster for better UX
+
+  const timer = setTimeout(() => {
+    if (!isDeleting && displayText.length < currentText.length) {
+      setDisplayText(currentText.substring(0, displayText.length + 1));
+      
+      // 2. GRADUAL REVEAL: For other slides, start fading in subtitle 
+      // when typing is halfway done, rather than at the very end.
+      if (displayText.length > currentText.length / 2) {
         setFadeSubtitle(true);
-        setTimeout(() => setShowIcons(true), 300); // Icons appear after subtitle
-        setTimeout(() => setIsDeleting(true), 3500);
-      } else if (isDeleting && displayText === "") {
-        setFadeSubtitle(false);
-        setShowIcons(false);
-        setIsDeleting(false);
-        setIndex((prev) => (prev + 1) % textPairs.length);
       }
-    }, typingSpeed);
 
-    return () => clearTimeout(timer);
-  }, [displayText, isDeleting, index]);
+    } else if (isDeleting && displayText.length > 0) {
+      setDisplayText(currentText.substring(0, displayText.length - 1));
+    } else if (!isDeleting && displayText.length === currentText.length) {
+      // Stay on the completed text for a while
+      setShowIcons(true); 
+      setTimeout(() => setIsDeleting(true), 3000); 
+    } else if (isDeleting && displayText === "") {
+      // Reset for next slide
+      setFadeSubtitle(false);
+      setShowIcons(false);
+      setIsDeleting(false);
+      setIndex((prev) => (prev + 1) % textPairs.length);
+    }
+  }, typingSpeed);
+
+  return () => clearTimeout(timer);
+}, [displayText, isDeleting, index, showIcons]);
 
   const currentIcons = techIconsMap[textPairs[index].title] || [];
 

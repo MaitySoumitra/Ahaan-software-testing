@@ -72,15 +72,15 @@ const HeroBanner = () => {
     const rotationSpeed = 0.0025; // positive rotates east->west
 
     // resizing
-const resize = () => {
-  const dpr = window.devicePixelRatio || 1;
-  w = window.innerWidth;
-  h = window.innerHeight;
-  canvas.width = netCanvas.width = w * dpr;
-  canvas.height = netCanvas.height = h * dpr;
-  ctx.scale(dpr, dpr);
-  nctx.scale(dpr, dpr);
-};
+    const resize = () => {
+      const dpr = window.devicePixelRatio || 1;
+      w = window.innerWidth;
+      h = window.innerHeight;
+      canvas.width = netCanvas.width = w * dpr;
+      canvas.height = netCanvas.height = h * dpr;
+      ctx.scale(dpr, dpr);
+      nctx.scale(dpr, dpr);
+    };
 
     window.addEventListener("resize", resize);
 
@@ -200,9 +200,8 @@ const resize = () => {
         // dot size based on depth (closer -> larger)
         const dotSize = 1.8 + Math.max(0, conn.depth) * 3.5;
         nctx.beginPath();
-        nctx.fillStyle = `rgba(140,230,255,${
-          0.9 * (0.3 + Math.abs(Math.sin(conn.t * 6)))
-        })`;
+        nctx.fillStyle = `rgba(140,230,255,${0.9 * (0.3 + Math.abs(Math.sin(conn.t * 6)))
+          })`;
         nctx.shadowColor = "rgba(80,200,255,0.9)";
         nctx.shadowBlur = 8;
         nctx.arc(x, y, dotSize, 0, Math.PI * 2);
@@ -265,19 +264,12 @@ const resize = () => {
         <div className="earth-glow" />
       </div>
 
-      {/* content */}
       <BannerContent />
 
-      {/* <section>
-  <div class='wave wave1'></div>
-  <div class='wave wave2'></div>
-  <div class='wave wave3'></div>
-  <div class='wave wave4'></div>
-</section> */}
- 
-      
+
+
     </div>
-    
+
   );
 };
 

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavLink } from "react-router-dom";
 import "./Header.css";
-import { HiMenuAlt3 } from "react-icons/hi";
 import { TbMessage } from "react-icons/tb";
 import MobileSidebar from "./MobileSidebar";
 import MenuToggle from "./MenuToggle";
@@ -41,7 +40,7 @@ useEffect(() => {
 
   return (
     <nav
-  className={`navbar navbar-expand-lg py-4 sticky-top header-main ${
+  className={`navbar navbar-expand-lg py-2 py-lg-4 sticky-top header-main ${
     scrolled ? "scrolled" : ""
   }`}
 >
@@ -49,7 +48,7 @@ useEffect(() => {
       <div className="container">
         <a className=" d-flex align-items-center" href="/">
           <img
-            src="https://ahaanmedia.com/asc/layouts/asc.png"
+            src="/asc.webp"
             alt="logo"
             className="asc-logo"
           />

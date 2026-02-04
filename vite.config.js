@@ -7,6 +7,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
+          'lottie-vendor': ['@lottiefiles/dotlottie-react'],
           'bootstrap-vendor': ['bootstrap', 'react-bootstrap'],
           'map-vendor': ['leaflet', 'leaflet.markercluster'],
           'vendors': ['axios', 'react-router-dom', 'swiper'],

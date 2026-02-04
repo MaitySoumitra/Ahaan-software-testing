@@ -5,16 +5,16 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./CaseStudyCarousel.css";
-import img1 from "../../../assets/texture/1.png";
-import img2 from "../../../assets/texture/2.png";
-import img3 from "../../../assets/texture/3.png";
-import img4 from "../../../assets/texture/4.png";
-import img5 from "../../../assets/texture/5.png";
-import img6 from "../../../assets/texture/6.png";
-import img7 from "../../../assets/texture/7.png";
-import img8 from "../../../assets/texture/8.png";
-import img9 from "../../../assets/texture/9.png";
-import img10 from "../../../assets/texture/10.png";
+import img1 from "../../../assets/texture/1.jpg";
+import img2 from "../../../assets/texture/2.jpg";
+import img3 from "../../../assets/texture/3.jpg";
+import img4 from "../../../assets/texture/4.jpg";
+import img5 from "../../../assets/texture/5.jpg";
+import img6 from "../../../assets/texture/6.jpg";
+import img7 from "../../../assets/texture/7.jpg";
+import img8 from "../../../assets/texture/8.jpg";
+import img9 from "../../../assets/texture/9.jpg";
+import img10 from "../../../assets/texture/10.jpg";
 
 const CaseStudyCarousel = () => {
   const slides = [

@@ -20,20 +20,18 @@ import './Home.css'
 const Home = () => {
   return (
     <div>
-      {/* These load instantly */}
       <HeroBanner />
       <WhoWeAreSection />
 
-      {/* These load as the user starts to interact/scroll */}
       <Suspense fallback={
-  <div className="d-flex justify-content-center align-items-center py-5">
-    <div className="loader-dots">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-}>
+        <div className="d-flex justify-content-center align-items-center py-5">
+          <div className="loader-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      }>
         <ServicesSection />
         <ThirdSection />
         <TotalProject />

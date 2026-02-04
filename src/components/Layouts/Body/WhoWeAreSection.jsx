@@ -12,7 +12,7 @@ const WhoWeAreSection = () => {
           {/* Left Image Section */}
           <Col lg={6} md={12} className="text-center mb-4 mb-lg-0">
             <img
-              src="/Who-We-Are.webp"
+              src="/Who-We-Are.jpg"
               alt="Mobile and Web Development"
               className="img-fluid who-we-are-image"
             />

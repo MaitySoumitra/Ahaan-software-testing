@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+
 import "./AllDevelopmentBanner.css";
 
 const AllDevelopmentBanner = () => {
@@ -22,11 +22,11 @@ const AllDevelopmentBanner = () => {
       <div className="banner-overlay"></div>
 
       {/* Text */}
-      <Container className="contact-banner-content">
+      <div className="container contact-banner-content">
         <h1 className="banner-heading">
         Web-Development Projects
         </h1>
-      </Container>
+      </div>
     </section>
   );
 };

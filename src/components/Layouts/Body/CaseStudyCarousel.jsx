@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+// Removed Container, Row, Col from react-bootstrap
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -32,32 +32,31 @@ const CaseStudyCarousel = () => {
 
   return (
     <section className="case-section py-5">
-      <Container>
+      <div className="container">
         {/* 🔹 Section Heading */}
-       <Row className="text-center mb-4">
-  <Col>
-    {/* Section Header */}
-    <div className="section-header-tech">
-      <p className="subtitle">
-        view our portfolio <span className="divider"></span>
-      </p>
-    </div>
+        <div className="row text-center mb-4">
+          <div className="col">
+            {/* Section Header */}
+            <div className="section-header-tech">
+              <p className="subtitle">
+                view our portfolio <span className="divider"></span>
+              </p>
+            </div>
 
-    {/* Title */}
-    <p className="title" style={{ textAlign: "left", color: "#fff" }}>
-      Case Study
-    </p>
+            {/* Title */}
+            <p className="title" style={{ textAlign: "left", color: "#fff" }}>
+              Case Study
+            </p>
 
-    {/* Description */}
-    <p className="image-carousel-content">
-      We understand, collaborate, and empower! From complex Software
-      Development Service to Seamless Integration, experience how our
-      next-gen IT consulting and software solutions can transform and
-      accelerate your business.
-    </p>
-  </Col>
-</Row>
-
+            {/* Description */}
+            <p className="image-carousel-content">
+              We understand, collaborate, and empower! From complex Software
+              Development Service to Seamless Integration, experience how our
+              next-gen IT consulting and software solutions can transform and
+              accelerate your business.
+            </p>
+          </div>
+        </div>
 
         {/* 🔹 Swiper Carousel */}
         <Swiper
@@ -95,7 +94,11 @@ const CaseStudyCarousel = () => {
                     marginTop: index % 2 === 0 ? "40px" : "0px",
                   }}
                 >
-                  <img src={slide.img} alt={`Case ${index + 1}`} />
+                  <img 
+                    src={slide.img} 
+                    alt={`Case ${index + 1}`} 
+                    className="img-fluid" // Added Bootstrap class for responsive images
+                  />
                 </div>
               </a>
             </SwiperSlide>
@@ -103,12 +106,12 @@ const CaseStudyCarousel = () => {
         </Swiper>
 
         {/* 🔹 Right-Aligned Button */}
-        <div className="view-all-btn">
-          <a href="/portfolio">
+        <div className="view-all-btn d-flex justify-content-end mt-4">
+          <a href="/portfolio" className="text-decoration-none">
             View All →
           </a>
         </div>
-      </Container>
+      </div>
 
       {/* 🔹 Bottom Wave Divider */}
       <section className="wave-section">

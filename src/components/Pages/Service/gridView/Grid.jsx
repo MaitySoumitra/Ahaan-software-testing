@@ -137,7 +137,7 @@ const cardData = [
 
 const Grid = () => {
   return (
-    <Container className="my-5 service-section">
+   <div className="container my-5 service-section">
       {cardData.map((service, index) => {
         const IconList = service.icons.map((url, i) => (
           <div
@@ -157,17 +157,18 @@ const Grid = () => {
         const isReverse = index % 2 !== 0;
 
         return (
-          <Row
+          <div
             key={service.title}
-            className={`align-items-center my-5 ${
+            className={`row align-items-center my-5 ${
               isReverse ? "flex-md-row-reverse" : ""
             }`}
           >
-            <Col md={5}>
+            {/* Image Column */}
+            <div className="col-md-5">
               <div
                 className="service-image-box"
                 style={{
-                  "--border-color": service.color, // 🔹 dynamic theme color
+                  "--border-color": service.color,
                   background: `linear-gradient(135deg, ${hexToRgba(
                     service.color,
                     0.25
@@ -181,9 +182,10 @@ const Grid = () => {
                   className="img-fluid service-image"
                 />
               </div>
-            </Col>
+            </div>
 
-            <Col md={7}>
+            {/* Content Column */}
+            <div className="col-md-7">
               <div className="service-content px-3 mt-4 mt-md-0">
                 <h1
                   className="service-title animated-heading"
@@ -203,30 +205,32 @@ const Grid = () => {
                   ))}
                 </div>
 
-                <p className="service-description ">{service.description}</p>
+                <p className="service-description">{service.description}</p>
 
-                <div className="button-icon-row">
-                  <Button
-                    as={Link}
+                <div className="button-icon-row d-flex align-items-center gap-3">
+                  <Link
                     to="/portfolio"
-                    variant="outline-light"
-                    className="explore-btn"
+                    className="btn explore-btn"
                     style={{
                       borderColor: service.color,
                       color: service.color,
+                      borderStyle: 'solid',
+                      borderWidth: '1px'
                     }}
                   >
                     Explore More
-                  </Button>
+                  </Link>
 
-                  <div className="service-icons">{IconList}</div>
+                  <div className="service-icons d-flex flex-wrap">
+                    {IconList}
+                  </div>
                 </div>
               </div>
-            </Col>
-          </Row>
+            </div>
+          </div>
         );
       })}
-    </Container>
+    </div>
   );
 };
 

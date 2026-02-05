@@ -1,13 +1,6 @@
 import React from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
-import {
-  FaHeadset,
-  FaChartLine,
-  FaShippingFast,
-  FaShoppingCart,
-} from "react-icons/fa";
+// Removed Container, Row, Col, Card imports
 import "./TabContent.css";
-
 
 const gridcontent = [
   {
@@ -28,7 +21,6 @@ const gridcontent = [
     description:
       "Protect your intellectual property, guarantee compliance with licensing agreements, and prevent copyright infringements with our cutting-edge DRM solutions. Stay secure with industry-leading protection from our expert team.",
   },
-
   {
     imgSrc: "https://ahaanmedia.com/asc/Industry/grids-image4.png",
     title: "Augmented Reality & Virtual Reality",
@@ -39,7 +31,7 @@ const gridcontent = [
 
 const Media = () => {
   return (
-    <div className="ecommerce-section">
+    <div className="ecommerce-section container-fluid p-0">
       <h2 className="fw-bold">One World, Countless Local Perspectives!</h2>
       <p className="text-muted">
         Expand your content’s reach with innovative AI solutions and a robust
@@ -47,33 +39,46 @@ const Media = () => {
         a digital content creator, our end-to-end solutions are designed to meet
         your unique business needs and drive global success.
       </p>
-      <img src="https://ahaanmedia.com/asc/Industry/Media.png" alt="E-Commerce" className="content-image" />
+      
+      <img 
+        src="https://ahaanmedia.com/asc/Industry/Media.png" 
+        alt="Media Solutions" 
+        className="img-fluid content-image mb-4 w-100" 
+      />
 
-      <h2 className="fw-bold text-left Revitalize mt-3">
+      <h2 className="fw-bold text-start Revitalize mt-3">
         Curating The Best Digital Experiences
       </h2>
-      <p className="text-left text-muted">
+      <p className="text-start text-muted">
         Your digital transformation begins now! With years of experience, deep
         domain expertise, and industry insights, we enhance the entire customer
         lifecycle—creating a sustainable business value chain through our
         comprehensive services and innovative solutions.
       </p>
 
-
-      <h2 className="fw-bold text-left Revitalize">
+      <h2 className="fw-bold text-start Revitalize mt-4 mb-4">
         Your Business Needs To Stay Dynamic In A Ecosystem
       </h2>
-      {gridcontent.map((feature, index) => (
-        <Row className="mb-4" key={index}>
-          <Col xs={12} md={6} className={index % 2 === 1 ? 'order-md-2 order-1' : 'order-md-1 order-1'}>
-  <img src={feature.imgSrc} alt={feature.title} className="img-fluid mb-3" />
-</Col>
-<Col xs={12} md={6} className={index % 2 === 1 ? 'order-md-1 order-2' : 'order-md-2 order-2'}>
-  <h2 className="grids-heading">{feature.title}</h2>
-  <p className="grids-content">{feature.description}</p>
-</Col>
 
-        </Row>
+      {gridcontent.map((feature, index) => (
+        <div className="row mb-5 align-items-center" key={index}>
+          {/* Image Column */}
+          <div className={`col-12 col-md-6 ${index % 2 === 1 ? 'order-md-2 order-1' : 'order-md-1 order-1'}`}>
+            <img 
+              src={feature.imgSrc} 
+              alt={feature.title} 
+              className="img-fluid mb-3 rounded shadow-sm" 
+            />
+          </div>
+
+          {/* Text Column */}
+          <div className={`col-12 col-md-6 ${index % 2 === 1 ? 'order-md-1 order-2' : 'order-md-2 order-2'}`}>
+            <div className="py-2">
+              <h2 className="grids-heading">{feature.title}</h2>
+              <p className="grids-content text-muted">{feature.description}</p>
+            </div>
+          </div>
+        </div>
       ))}
     </div>
   );

@@ -26,7 +26,7 @@ const Banner = () => {
       </section>
 
       {/* BELOW BANNER CONTENT */}
-      <Container>
+      <div className="container">
         {/* WHO WE ARE SECTION */}
         <div className="row align-items-center mb-5">
           <div className="col-md-6 team-discus-desktop">
@@ -107,7 +107,7 @@ const Banner = () => {
             />
           </div>
         </div>
-      </Container>
+      </div>
     </div>
   );
 };

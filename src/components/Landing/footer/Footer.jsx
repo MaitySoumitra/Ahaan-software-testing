@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+// Removed Container, Row, Col from react-bootstrap
 import { FaFacebook, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { FaLocationDot, FaPhone } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
@@ -47,47 +47,54 @@ const Footer = () => {
         backgroundPosition: 'center center',
       }}
     >
-      <Container>
-        <Row className="gy-4">
+      <div className="container">
+        <div className="row gy-4">
           {/* Logo & Social Links */}
-          <Col lg={4} md={6} sm={12} className="footer-section text-left text-md-start">
+          <div className="col-lg-4 col-md-6 col-sm-12 footer-section text-start">
             <a href='https://ahaansoftware.com/' className="d-inline-block">
               <img src="https://ahaanmedia.com/asc/layouts/asc.png" alt="Logo" className="footer-logo mb-3" />
             </a>
             <p className="footer-subtitle">
               Top IT Consulting Company Delivering Custom Website and App at Ahaan Software Consulting.
             </p>
-            <p>Find Us On:</p>
-            <div className="social-icons">
+            <p className="fw-bold mb-2">Find Us On:</p>
+            <div className="social-icons d-flex gap-3">
               <a href="https://www.facebook.com/ahaansoftwareconsulting" target="_blank" rel="noopener noreferrer"><FaFacebook /></a>
               <a href="https://www.linkedin.com/company/ahaansoftware" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
               <a href="https://www.instagram.com/ahaansoftware/" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
             </div>
-          </Col>
+          </div>
 
           {/* Address & Contact */}
-          <Col lg={4} md={6} sm={12} className="footer-section">
-            <h3 className="footer-text">Get In Touch</h3>
-            <p><FaLocationDot />&nbsp;Bengal Eco Intelligent Park, EM Block, Sector V, Bidhannagar, Kolkata, West Bengal 700091</p>
-            <p><FaPhone />&nbsp;+91 8981744661</p>
-            <p><IoMdMail />&nbsp;sales@ahaansoftware.com</p>
-          </Col>
+          <div className="col-lg-4 col-md-6 col-sm-12 footer-section">
+            <h3 className="footer-text mb-3">Get In Touch</h3>
+            <p className="d-flex align-items-start gap-2">
+              <FaLocationDot className="mt-1" />
+              <span>Bengal Eco Intelligent Park, EM Block, Sector V, Bidhannagar, Kolkata, West Bengal 700091</span>
+            </p>
+            <p className="d-flex align-items-center gap-2">
+              <FaPhone /> +91 8981744661
+            </p>
+            <p className="d-flex align-items-center gap-2">
+              <IoMdMail /> sales@ahaansoftware.com
+            </p>
+          </div>
 
           {/* Inquiry Form */}
-          <Col lg={4} md={12} sm={12} className="footer-form">
-            <h2 className="form-heading">ENQUIRE NOW FOR WEBSITE DEVELOPMENT</h2>
+          <div className="col-lg-4 col-md-12 col-sm-12 footer-form">
+            <h2 className="form-heading mb-3">ENQUIRE NOW FOR WEBSITE DEVELOPMENT</h2>
             <form ref={form} onSubmit={handleSubmit(onSubmit)}>
-              <Row className="mb-3">
-                <Col>
+              <div className="row mb-3">
+                <div className="col-12 col-sm-6 mb-3 mb-sm-0">
                   <input
                     type="text"
                     {...register("name", { required: "Name is required" })}
-                    className="form-control"
+                    className={`form-control ${errors.name ? 'is-invalid' : ''}`}
                     placeholder="Name"
                   />
-                  {errors.name && <p className="text-danger">{errors.name.message}</p>}
-                </Col>
-                <Col>
+                  {errors.name && <div className="invalid-feedback">{errors.name.message}</div>}
+                </div>
+                <div className="col-12 col-sm-6">
                   <input
                     type="tel"
                     {...register("phoneNumber", {
@@ -97,49 +104,49 @@ const Footer = () => {
                         message: "Must be exactly 10 digits",
                       },
                     })}
-                    className="form-control"
+                    className={`form-control ${errors.phoneNumber ? 'is-invalid' : ''}`}
                     placeholder="Phone Number"
                   />
-                  {errors.phoneNumber && <p className="text-danger">{errors.phoneNumber.message}</p>}
-                </Col>
-              </Row>
+                  {errors.phoneNumber && <div className="invalid-feedback">{errors.phoneNumber.message}</div>}
+                </div>
+              </div>
 
-              <Row className="mb-3">
-                <Col>
+              <div className="row mb-3">
+                <div className="col-12 col-sm-6 mb-3 mb-sm-0">
                   <input
                     type="email"
                     {...register("email", { required: "Email is required" })}
-                    className="form-control"
+                    className={`form-control ${errors.email ? 'is-invalid' : ''}`}
                     placeholder="Email"
                   />
-                  {errors.email && <p className="text-danger">{errors.email.message}</p>}
-                </Col>
-                <Col>
+                  {errors.email && <div className="invalid-feedback">{errors.email.message}</div>}
+                </div>
+                <div className="col-12 col-sm-6">
                   <input
                     type="text"
                     {...register("companyName", { required: "Company Name is required" })}
-                    className="form-control"
+                    className={`form-control ${errors.companyName ? 'is-invalid' : ''}`}
                     placeholder="Company Name"
                   />
-                  {errors.companyName && <p className="text-danger">{errors.companyName.message}</p>}
-                </Col>
-              </Row>
+                  {errors.companyName && <div className="invalid-feedback">{errors.companyName.message}</div>}
+                </div>
+              </div>
 
               <div className="mb-3">
                 <textarea
                   {...register("message", { required: "Message is required" })}
-                  className="form-control"
+                  className={`form-control ${errors.message ? 'is-invalid' : ''}`}
                   rows="4"
                   placeholder="What are your requirements?"
                 ></textarea>
-                {errors.message && <p className="text-danger">{errors.message.message}</p>}
+                {errors.message && <div className="invalid-feedback">{errors.message.message}</div>}
               </div>
 
-              <button type="submit" className="btn btn-primary w-100">Get a Free Quote</button>
+              <button type="submit" className="btn btn-primary w-100 py-2 fw-bold">Get a Free Quote</button>
             </form>
-          </Col>
-        </Row>
-      </Container>
+          </div>
+        </div>
+      </div>
       <ToastContainer position="top-right" autoClose={3000} />
     </footer>
   );

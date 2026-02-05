@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Modal } from "react-bootstrap";
+// Removed Modal import from react-bootstrap
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
 import "./Team.css";
-import { getTeams } from "../../../Api/api"; // <-- API IMPORT
+import { getTeams } from "../../../Api/api"; 
 
 const MeetOurTeam = () => {
   const [teamMembers, setTeamMembers] = useState([]);
@@ -15,20 +15,22 @@ const MeetOurTeam = () => {
   useEffect(() => {
     const fetchTeam = async () => {
       const data = await getTeams();
-
-      // Always force array
       setTeamMembers(Array.isArray(data) ? data : []);
     };
-
     fetchTeam();
   }, []);
 
+  // Modal manual toggle logic
   const handleShow = (member) => {
     setSelectedMember(member);
     setShow(true);
+    document.body.classList.add("modal-open"); // Bootstrap class to prevent body scroll
   };
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    document.body.classList.remove("modal-open");
+  };
 
   return (
     <div className="container py-5 team-carousel-section section-header-tech">
@@ -43,7 +45,6 @@ const MeetOurTeam = () => {
         of innovation and enterprise!
       </p>
 
-      {/* Handle API not ready */}
       {teamMembers.length === 0 ? (
         <p className="text-center text-muted">Loading team members...</p>
       ) : (
@@ -67,6 +68,7 @@ const MeetOurTeam = () => {
               <div
                 className="team-carousel-card text-center"
                 onClick={() => handleShow(member)}
+                style={{ cursor: "pointer" }}
               >
                 <img
                   src={member.image}
@@ -81,25 +83,55 @@ const MeetOurTeam = () => {
         </Swiper>
       )}
 
-      {/* Modal */}
-      <Modal className="about-modal" show={show} onHide={handleClose} centered>
-        {selectedMember && (
-          <>
-            <Modal.Header closeButton></Modal.Header>
-            <Modal.Body className="text-center">
-              <img
-                src={selectedMember.image}
-                alt={selectedMember.name}
-                className="rounded-circle mb-3"
-                style={{ width: "120px", height: "120px", objectFit: "cover" }}
-              />
-              <Modal.Title>{selectedMember.name}</Modal.Title>
-              <h5 className="fw-bold">{selectedMember.position}</h5>
-              <p className="text-muted mt-3">{selectedMember.description}</p>
-            </Modal.Body>
-          </>
-        )}
-      </Modal>
+      {/* Manual Bootstrap Modal */}
+      {show && (
+        <>
+          <div 
+            className="modal fade show d-block about-modal" 
+            tabIndex="-1" 
+            style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
+            onClick={handleClose} // Close on backdrop click
+          >
+            <div 
+              className="modal-dialog modal-dialog-centered" 
+              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
+            >
+              <div className="modal-content">
+                {selectedMember && (
+                  <>
+                    <div className="modal-header border-0">
+                      <button 
+                        type="button" 
+                        className="btn-close" 
+                        onClick={handleClose}
+                      ></button>
+                    </div>
+                    <div className="modal-body text-center">
+                      <img
+                        src={selectedMember.image}
+                        alt={selectedMember.name}
+                        className="rounded-circle mb-3 shadow"
+                        style={{ width: "120px", height: "120px", objectFit: "cover" }}
+                      />
+                      <h4 className="modal-title fw-bold">{selectedMember.name}</h4>
+                      <h5 className="text-primary">{selectedMember.position}</h5>
+                      <p className="text-muted mt-3 px-3">
+                        {selectedMember.description}
+                      </p>
+                    </div>
+                    <div className="modal-footer border-0 justify-content-center">
+                      <button className="btn btn-secondary px-4" onClick={handleClose}>
+                        Close
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="modal-backdrop fade show"></div>
+        </>
+      )}
     </div>
   );
 };

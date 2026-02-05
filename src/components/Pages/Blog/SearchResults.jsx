@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import { Container, Row, Col, Card, Button, Dropdown } from "react-bootstrap";
 import { TfiSharethis } from "react-icons/tfi";
 import { FaFacebookF, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import BlogBanner from "./BlogBanner";
@@ -49,6 +48,7 @@ const SearchResults = () => {
   const [blogs, setBlogs] = useState([]);
   const [reactionCounts, setReactionCounts] = useState({});
   const [selectedReactions, setSelectedReactions] = useState({});
+  const [activeShare, setActiveShare] = useState(null); // Track which share menu is open
   const location = useLocation();
   const query = new URLSearchParams(location.search).get("query") || "";
 
@@ -59,7 +59,6 @@ const SearchResults = () => {
         b.title.toLowerCase().includes(query.toLowerCase())
       );
 
-      // Initialize reaction counts
       const counts = {};
       const local = {};
       filtered.forEach((blog) => {
@@ -118,11 +117,11 @@ const SearchResults = () => {
   return (
     <>
       <BlogBanner />
-      <Container className="mt-5">
+      <div className="container mt-5">
         <h2 className="blog-heading text-center">
           Search Results for "{query}"
         </h2>
-        <Row className="p-3">
+        <div className="row p-3">
           {blogs.length > 0 ? (
             blogs.map((blog) => {
               const slug = createSlug(blog.title);
@@ -131,42 +130,42 @@ const SearchResults = () => {
               const blogReactions = reactionCounts[blog.id] || {};
 
               return (
-                <Col md={6} lg={4} key={blog.id} className="mb-4">
-                  <Card
-                    className="blog-card shadow-sm"
+                <div key={blog.id} className="col-12 col-md-6 col-lg-4 mb-4">
+                  <div
+                    className="card blog-card shadow-sm h-100"
                     onClick={() => window.open(`/blog/${slug}`, "_blank")}
                     style={{ cursor: "pointer" }}
                   >
                     {blog.image && (
-                      <Card.Img
-                        variant="top"
+                      <img
                         src={
                           blog.image.startsWith("http")
                             ? blog.image
                             : `https://ahaansoftware.com/${blog.image}`
                         }
-                        className="blog-image"
+                        className="card-img-top blog-image"
                         alt={blog.title}
                       />
                     )}
-                    <Card.Body>
-                      <Card.Title className="blog-page-title">
+                    <div className="card-body d-flex flex-column">
+                      <h5 className="card-title blog-page-title">
                         {blog.title}
-                      </Card.Title>
-                      <Card.Text className="blog-content">
+                      </h5>
+                      <p className="card-text blog-content flex-grow-1">
                         {trimToWords(blog.content)}
-                      </Card.Text>
+                      </p>
 
                       <div className="blog-author-section d-flex align-items-center mb-2">
                         {blog.author_image && (
                           <img
                             src={blog.author_image}
                             alt={blog.author}
-                            className="author-inline-img"
+                            className="author-inline-img rounded-circle me-2"
+                            style={{ width: '40px', height: '40px', objectFit: 'cover' }}
                           />
                         )}
                         <div>
-                          <p className="blog-author mb-0">
+                          <p className="blog-author mb-0 fw-bold">
                             By {blog.author || "Unknown"}
                           </p>
                           <p className="blog-date mb-2 text-muted small">
@@ -177,22 +176,21 @@ const SearchResults = () => {
 
                       {/* Reactions */}
                       <div
-                        className="reaction-container"
+                        className="reaction-container mb-3"
                         onClick={(e) => e.stopPropagation()}
                       >
                         {reactions.map(({ emoji, label }) => (
-                          <Button
+                          <button
                             key={label}
-                            variant={
+                            className={`btn btn-sm me-1 mb-1 ${
                               selectedReactions[blog.id] === label
-                                ? "warning"
-                                : "outline-secondary"
-                            }
-                            className="reaction-btn me-1 mb-1"
+                                ? "btn-warning"
+                                : "btn-outline-secondary"
+                            }`}
                             onClick={() => handleReaction(blog.id, label)}
                           >
                             {emoji} {blogReactions[label] || 0}
-                          </Button>
+                          </button>
                         ))}
                       </div>
 
@@ -201,81 +199,58 @@ const SearchResults = () => {
                         className="blog-actions d-flex justify-content-between align-items-center"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <Button
-                          variant="dark"
-                          className="read-more-btn"
+                        <button
+                          className="btn btn-dark btn-sm read-more-btn"
                           onClick={() => window.open(`/blog/${slug}`, "_blank")}
                         >
                           Read More
-                        </Button>
+                        </button>
 
-                        <Dropdown className="position-relative">
-                          <Dropdown.Toggle
-                            variant="outline-dark"
-                            bsPrefix="share-btn-icon-only no-caret"
+                        <div className="dropdown position-relative">
+                          <button
+                            className="btn btn-outline-dark btn-sm border-0 share-btn-icon-only no-caret"
+                            type="button"
+                            onClick={() => setActiveShare(activeShare === blog.id ? null : blog.id)}
                           >
                             <TfiSharethis />
-                          </Dropdown.Toggle>
+                          </button>
 
-                          <Dropdown.Menu className="animated-share-dropdown">
-                            <div className="share-icons-container">
-                              <button
-                                className="share-icon-btn facebook"
-                                onClick={() =>
-                                  window.open(
-                                    `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                                      blogUrl
-                                    )}`,
-                                    "_blank"
-                                  )
-                                }
-                              >
-                                <FaFacebookF />
-                              </button>
-                              <button
-                                className="share-icon-btn linkedin"
-                                onClick={() =>
-                                  window.open(
-                                    `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-                                      blogUrl
-                                    )}`,
-                                    "_blank"
-                                  )
-                                }
-                              >
-                                <FaLinkedinIn />
-                              </button>
-                              <button
-                                className="share-icon-btn whatsapp"
-                                onClick={() =>
-                                  window.open(
-                                    `https://api.whatsapp.com/send?text=${encodeURIComponent(
-                                      `📌 *${blog.title}*\n👤 By ${
-                                        blog.author || "Unknown"
-                                      }\n🕒 ${formatDateTime(
-                                        blog.created_at
-                                      )}\n\n${summary}...\n\n🔗 Read more: ${blogUrl}`
-                                    )}`,
-                                    "_blank"
-                                  )
-                                }
-                              >
-                                <FaWhatsapp />
-                              </button>
+                          {activeShare === blog.id && (
+                            <div className="dropdown-menu show shadow p-2 animated-share-dropdown" style={{ right: 0, left: 'auto' }}>
+                              <div className="d-flex gap-2 share-icons-container">
+                                <button
+                                  className="btn btn-sm btn-outline-primary rounded-circle share-icon-btn facebook"
+                                  onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(blogUrl)}`, "_blank")}
+                                >
+                                  <FaFacebookF />
+                                </button>
+                                <button
+                                  className="btn btn-sm btn-outline-info rounded-circle share-icon-btn linkedin"
+                                  onClick={() => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(blogUrl)}`, "_blank")}
+                                >
+                                  <FaLinkedinIn />
+                                </button>
+                                <button
+                                  className="btn btn-sm btn-outline-success rounded-circle share-icon-btn whatsapp"
+                                  onClick={() => window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(`🔗 Read: ${blogUrl}`)}`, "_blank")}
+                                >
+                                  <FaWhatsapp />
+                                </button>
+                              </div>
                             </div>
-                          </Dropdown.Menu>
-                        </Dropdown>
+                          )}
+                        </div>
                       </div>
-                    </Card.Body>
-                  </Card>
-                </Col>
+                    </div>
+                  </div>
+                </div>
               );
             })
           ) : (
             <p className="text-center w-100 mt-5">No blogs found 😢</p>
           )}
-        </Row>
-      </Container>
+        </div>
+      </div>
     </>
   );
 };

@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import { Container, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import { toast, ToastContainer } from "react-toastify";
@@ -7,7 +6,6 @@ import "react-toastify/dist/ReactToastify.css";
 import "./Banner.css";
 
 const Banner = () => {
-
   const form = useRef();
 
   const {
@@ -40,10 +38,10 @@ const Banner = () => {
       className="banner-section"
       style={{ backgroundImage: `url(https://ahaanmedia.com/asc/Landing/LandingBanner.jpg)` }}
     >
-      <Container>
-        <Row className="align-items-center">
+      <div className="container">
+        <div className="row align-items-center">
           {/* Left Side - Text Content */}
-          <Col md={6} className="left-side text-white">
+          <div className="col-md-6 left-side text-white">
             <h1 className="banner-heading fade-in-left">
               Build Your Dream Website and App with Ahaan Software
             </h1>
@@ -63,30 +61,30 @@ const Banner = () => {
             >
               Learn More
             </a>
-          </Col>
+          </div>
 
-        
-          <Col md={6} className="right-side fade-in-right">
-            <div className="form-container">
-              <h2 className="form-heading">
+          {/* Right Side - Form */}
+          <div className="col-md-6 right-side fade-in-right">
+            <div className="form-container bg-white p-4 rounded shadow">
+              <h2 className="form-heading mb-4 text-center">
                 ENQUIRE NOW FOR WEBSITE DEVELOPMENT
               </h2>
 
               <form ref={form} onSubmit={handleSubmit(onSubmit)}>
-             
-                <Row className="mb-3">
-                  <Col>
+                {/* Name & Phone */}
+                <div className="row mb-3">
+                  <div className="col-12 col-sm-6 mb-3 mb-sm-0">
                     <input
                       type="text"
                       {...register("name", { required: "Name is required" })}
-                      className="form-control"
+                      className={`form-control ${errors.name ? 'is-invalid' : ''}`}
                       placeholder="Name"
                     />
                     {errors.name && (
-                      <p className="text-danger">{errors.name.message}</p>
+                      <div className="invalid-feedback">{errors.name.message}</div>
                     )}
-                  </Col>
-                  <Col>
+                  </div>
+                  <div className="col-12 col-sm-6">
                     <input
                       type="tel"
                       {...register("phoneNumber", {
@@ -96,46 +94,46 @@ const Banner = () => {
                           message: "Must be exactly 10 digits",
                         },
                       })}
-                      className="form-control"
+                      className={`form-control ${errors.phoneNumber ? 'is-invalid' : ''}`}
                       placeholder="Phone Number"
                     />
                     {errors.phoneNumber && (
-                      <p className="text-danger">
+                      <div className="invalid-feedback">
                         {errors.phoneNumber.message}
-                      </p>
+                      </div>
                     )}
-                  </Col>
-                </Row>
+                  </div>
+                </div>
 
                 {/* Email & Company */}
-                <Row className="mb-3">
-                  <Col>
+                <div className="row mb-3">
+                  <div className="col-12 col-sm-6 mb-3 mb-sm-0">
                     <input
                       type="email"
                       {...register("email", { required: "Email is required" })}
-                      className="form-control"
+                      className={`form-control ${errors.email ? 'is-invalid' : ''}`}
                       placeholder="Email"
                     />
                     {errors.email && (
-                      <p className="text-danger">{errors.email.message}</p>
+                      <div className="invalid-feedback">{errors.email.message}</div>
                     )}
-                  </Col>
-                  <Col>
+                  </div>
+                  <div className="col-12 col-sm-6">
                     <input
                       type="text"
                       {...register("companyName", {
                         required: "Company Name is required",
                       })}
-                      className="form-control"
+                      className={`form-control ${errors.companyName ? 'is-invalid' : ''}`}
                       placeholder="Company Name"
                     />
                     {errors.companyName && (
-                      <p className="text-danger">
+                      <div className="invalid-feedback">
                         {errors.companyName.message}
-                      </p>
+                      </div>
                     )}
-                  </Col>
-                </Row>
+                  </div>
+                </div>
 
                 {/* Message */}
                 <div className="mb-3">
@@ -143,24 +141,24 @@ const Banner = () => {
                     {...register("message", {
                       required: "Message is required",
                     })}
-                    className="form-control"
+                    className={`form-control ${errors.message ? 'is-invalid' : ''}`}
                     rows="4"
                     placeholder="What are your requirements?"
                   ></textarea>
                   {errors.message && (
-                    <p className="text-danger">{errors.message.message}</p>
+                    <div className="invalid-feedback">{errors.message.message}</div>
                   )}
                 </div>
 
                 {/* Submit Button */}
-                <button type="submit" className="btn btn-primary w-100">
+                <button type="submit" className="btn btn-primary w-100 fw-bold">
                   Get a Free Quote
                 </button>
               </form>
             </div>
-          </Col>
-        </Row>
-      </Container>
+          </div>
+        </div>
+      </div>
       <ToastContainer position="top-right" autoClose={3000} />
     </section>
   );

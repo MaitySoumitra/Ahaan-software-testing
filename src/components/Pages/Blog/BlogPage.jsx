@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Container, Row, Col, Card, Button, Dropdown } from "react-bootstrap";
 import { TfiSharethis } from "react-icons/tfi";
 import { FaFacebookF, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import "./BlogPage.css";
 
+// Helper functions remain the same
 const reactions = [
   { emoji: "👍", label: "thumbs up" },
   { emoji: "❤️", label: "love" },
@@ -53,6 +53,7 @@ const BlogPage = () => {
   const [reactionCounts, setReactionCounts] = useState({});
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [activeShare, setActiveShare] = useState(null); // Track open share menu
   const blogsPerPage = 9;
 
   const fetchAndUpdateBlogs = async () => {
@@ -87,12 +88,11 @@ const BlogPage = () => {
   }, []);
 
   useEffect(() => {
-    setCurrentPage(1); // Reset to first page on search
+    setCurrentPage(1);
   }, [searchQuery]);
 
   const handleReaction = async (blogId, newReaction) => {
     const prevReaction = selectedReactions[blogId];
-
     if (prevReaction === newReaction) return;
 
     localStorage.setItem(`reacted_${blogId}`, newReaction);
@@ -100,16 +100,11 @@ const BlogPage = () => {
 
     setReactionCounts((prev) => {
       const updated = { ...prev };
-      if (!updated[blogId]) {
-        updated[blogId] = { "thumbs up": 0, love: 0 };
-      }
-
+      if (!updated[blogId]) updated[blogId] = { "thumbs up": 0, love: 0 };
       if (prevReaction && updated[blogId][prevReaction] > 0) {
         updated[blogId][prevReaction] -= 1;
       }
-
       updated[blogId][newReaction] = (updated[blogId][newReaction] || 0) + 1;
-
       return updated;
     });
 
@@ -121,12 +116,9 @@ const BlogPage = () => {
 
       await fetch("https://ahaansoftware.com/update-json.php", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: formData,
       });
-
       await fetchAndUpdateBlogs();
     } catch (err) {
       console.error("Failed to update reaction:", err);
@@ -146,8 +138,8 @@ const BlogPage = () => {
   );
 
   return (
-    <Container>
-      <Row className="mb-2 p-3 align-items-stretch mt-5">
+    <div className="container">
+      <div className="row mb-2 p-3 align-items-stretch mt-5">
         {paginatedBlogs.map((blog) => {
           const slug = createSlug(blog.title);
           const blogUrl = `${window.location.origin}/blog/${slug}`;
@@ -155,192 +147,122 @@ const BlogPage = () => {
           const blogReactions = reactionCounts[blog.id] || {};
 
           return (
-            <Col md={6} lg={4} key={blog.id} className="mb-4">
-              <Card
-                className="blog-card shadow-sm"
+            <div key={blog.id} className="col-md-6 col-lg-4 mb-4">
+              <div
+                className="card blog-card shadow-sm h-100"
                 onClick={() => window.open(`/blog/${slug}`, "_blank")}
                 style={{ cursor: "pointer" }}
               >
                 {blog.image && (
-                  <Card.Img
-                    variant="top"
-                    src={
-                      blog.image.startsWith("http")
-                        ? blog.image
-                        : `https://ahaansoftware.com/${blog.image}`
-                    }
-                    className="blog-image"
+                  <img
+                    src={blog.image.startsWith("http") ? blog.image : `https://ahaansoftware.com/${blog.image}`}
+                    className="card-img-top blog-image"
                     alt={blog.title}
                   />
                 )}
-                <Card.Body>
-                  <Card.Title className="blog-page-title">
-                    {blog.title}
-                  </Card.Title>
-                                    <Card.Text className="blog-content">
+                <div className="card-body d-flex flex-column">
+                  <h5 className="card-title blog-page-title">{blog.title}</h5>
+                  <p className="card-text blog-content flex-grow-1">
                     {trimToWords(blog.content)}
-                  </Card.Text>
-                  <div className="blog-author-section d-flex align-items-center mb-2">
+                  </p>
+                  
+                  <div className="blog-author-section d-flex align-items-center mb-2 mt-auto">
                     {blog.author_image && (
                       <img
                         src={blog.author_image}
                         alt={blog.author}
-                        className="author-inline-img "
+                        className="author-inline-img rounded-circle me-2"
+                        style={{ width: '40px', height: '40px', objectFit: 'cover' }}
                       />
                     )}
                     <div>
-                      <p className="blog-author mb-0">
-                        By {blog.author || "Unknown"}
-                      </p>
-                      <p className="blog-date mb-2 text-muted small">
+                      <p className="blog-author mb-0 fw-bold">By {blog.author || "Unknown"}</p>
+                      <p className="blog-date mb-0 text-muted small">
                         {formatDateTime(blog.created_at)}
                       </p>
                     </div>
                   </div>
 
                   {/* Reactions */}
-                  <div
-                    className="reaction-container"
-                    onClick={(e) => e.stopPropagation()}
-                  >
+                  <div className="reaction-container mb-3" onClick={(e) => e.stopPropagation()}>
                     {reactions.map(({ emoji, label }) => (
-                      <Button
+                      <button
                         key={label}
-                        variant={
-                          selectedReactions[blog.id] === label
-                            ? "warning"
-                            : "outline-secondary"
-                        }
-                        className="reaction-btn me-1 mb-1"
+                        className={`btn btn-sm me-1 ${selectedReactions[blog.id] === label ? "btn-warning" : "btn-outline-secondary"}`}
                         onClick={() => handleReaction(blog.id, label)}
                       >
                         {emoji} {blogReactions[label] || 0}
-                      </Button>
+                      </button>
                     ))}
                   </div>
 
                   {/* Actions */}
-                  <div
-                    className="blog-actions d-flex justify-content-between align-items-center"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <Button
-                      variant="dark"
-                      className="read-more-btn"
+                  <div className="blog-actions d-flex justify-content-between align-items-center" onClick={(e) => e.stopPropagation()}>
+                    <button
+                      className="btn btn-dark btn-sm read-more-btn"
                       onClick={() => window.open(`/blog/${slug}`, "_blank")}
                     >
                       Read More
-                    </Button>
+                    </button>
 
-                    <Dropdown className="position-relative">
-                      <Dropdown.Toggle
-                        variant="outline-dark"
-                        bsPrefix="share-btn-icon-only no-caret"
+                    <div className="dropdown">
+                      <button
+                        className="btn btn-outline-dark btn-sm border-0 share-btn-icon-only no-caret"
+                        type="button"
+                        onClick={() => setActiveShare(activeShare === blog.id ? null : blog.id)}
                       >
                         <TfiSharethis />
-                      </Dropdown.Toggle>
+                      </button>
 
-                      <Dropdown.Menu className="animated-share-dropdown">
-                        <div className="share-icons-container">
-                          <button
-                            className="share-icon-btn facebook"
-                            onClick={() =>
-                              window.open(
-                                `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                                  blogUrl
-                                )}`,
-                                "_blank"
-                              )
-                            }
-                          >
-                            <FaFacebookF />
-                          </button>
-                          <button
-                            className="share-icon-btn linkedin"
-                            onClick={() =>
-                              window.open(
-                                `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-                                  blogUrl
-                                )}`,
-                                "_blank"
-                              )
-                            }
-                          >
-                            <FaLinkedinIn />
-                          </button>
-                          <button
-                            className="share-icon-btn whatsapp"
-                            onClick={() =>
-                              window.open(
-                                `https://api.whatsapp.com/send?text=${encodeURIComponent(
-                                  `📌 *${blog.title}*\n👤 By ${
-                                    blog.author || "Unknown"
-                                  }\n🕒 ${formatDateTime(
-                                    blog.created_at
-                                  )}\n\n${summary}...\n\n🔗 Read more: ${blogUrl}`
-                                )}`,
-                                "_blank"
-                              )
-                            }
-                          >
-                            <FaWhatsapp />
-                          </button>
+                      {activeShare === blog.id && (
+                        <div className="dropdown-menu show shadow p-2 animated-share-dropdown" style={{ right: 0, left: 'auto' }}>
+                          <div className="d-flex gap-2">
+                            <button className="btn btn-outline-primary btn-sm rounded-circle share-icon-btn" onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(blogUrl)}`, "_blank")}>
+                              <FaFacebookF />
+                            </button>
+                            <button className="btn btn-outline-info btn-sm rounded-circle share-icon-btn" onClick={() => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(blogUrl)}`, "_blank")}>
+                              <FaLinkedinIn />
+                            </button>
+                            <button className="btn btn-outline-success btn-sm rounded-circle share-icon-btn" onClick={() => window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(`🔗 Read more: ${blogUrl}`)}`, "_blank")}>
+                              <FaWhatsapp />
+                            </button>
+                          </div>
                         </div>
-                      </Dropdown.Menu>
-                    </Dropdown>
+                      )}
+                    </div>
                   </div>
-                </Card.Body>
-              </Card>
-            </Col>
+                </div>
+              </div>
+            </div>
           );
         })}
-      </Row>
+      </div>
 
       {/* Pagination UI */}
-      <div className="d-flex justify-content-center mb-4">
-        <nav>
-          <ul className="pagination">
-            <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
-              <button
-                className="page-link"
-                onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
-              >
-                Prev
+      <nav className="d-flex justify-content-center mb-5">
+        <ul className="pagination">
+          <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+            <button className="page-link" onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}>
+              Prev
+            </button>
+          </li>
+
+          {Array.from({ length: totalPages }, (_, i) => (
+            <li key={i + 1} className={`page-item ${currentPage === i + 1 ? "active" : ""}`}>
+              <button className="page-link" onClick={() => setCurrentPage(i + 1)}>
+                {i + 1}
               </button>
             </li>
+          ))}
 
-            {Array.from({ length: totalPages }, (_, i) => (
-              <li
-                key={i + 1}
-                className={`page-item ${currentPage === i + 1 ? "active" : ""}`}
-              >
-                <button
-                  className="page-link"
-                  onClick={() => setCurrentPage(i + 1)}
-                >
-                  {i + 1}
-                </button>
-              </li>
-            ))}
-
-            <li
-              className={`page-item ${
-                currentPage === totalPages ? "disabled" : ""
-              }`}
-            >
-              <button
-                className="page-link"
-                onClick={() =>
-                  setCurrentPage((p) => Math.min(p + 1, totalPages))
-                }
-              >
-                Next
-              </button>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </Container>
+          <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
+            <button className="page-link" onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}>
+              Next
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
   );
 };
 

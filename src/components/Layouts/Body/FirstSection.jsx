@@ -1,5 +1,5 @@
-import { Container, Row, Col, Image } from "react-bootstrap";
-
+import React from "react";
+// Removed Container, Row, Col, Image imports
 import "./FirstSection.css";
 
 const clients = [
@@ -13,32 +13,34 @@ const clients = [
 
 const FirstSection = () => {
   return (
-    <Container className="selected-clients section-header-tech">
+    <div className="container selected-clients section-header-tech">
       <h6 className="subtitle">
-          Trusted Client <span className="divider"></span>
-        </h6>
+        Trusted Client <span className="divider"></span>
+      </h6>
       <label className="title">Our Clients</label>
-         <p className="image-carousel-content">
+      <p className="image-carousel-content">
         We understand, collaborate, and empower! From complex Software
         Development Service to Seamless Integration, experience how our next-gen
         IT consulting and software solutions can transform and accelerate your
         business.
       </p>
-      <div className="mt-4 d-flex flex-wrap">
+
+      {/* Grid Layout using Standard Bootstrap Row/Col classes */}
+      <div className="row mt-4 g-3">
         {clients.map((client, index) => (
-          <Col xs={4} sm={4} md={2} key={index} className="text-center">
+          <div key={index} className="col-4 col-md-2 text-center">
             <div className="first-client-col">
-              <Image
+              <img
                 src={client.src}
                 alt={client.alt}
-                className="first-client-image"
+                className="img-fluid first-client-image"
+                loading="lazy"
               />
             </div>
-          </Col>
+          </div>
         ))}
       </div>
-   
-    </Container>
+    </div>
   );
 };
 

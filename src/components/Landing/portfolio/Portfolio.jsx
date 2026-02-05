@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+// Removed Container, Row, Col imports
 import "./Portfolio.css";
 
 const projects = [
@@ -19,21 +19,29 @@ const projects = [
 
 const Portfolio = () => {
   return (
-    <Container className="portfolio-section text-center py-5">
+    <div className="container portfolio-section text-center py-5">
       <h2 className="portfolio-title mb-3">Digital Solutions</h2>
       <p className="portfolio-subtitle mb-4">Showcasing Our Most Recent Web Creations</p>
-      <Row>
+      
+      <div className="row">
         {projects.map((project) => (
-          <Col key={project.id} xl={3} lg={4} md={6} sm={6} xs={12} className="mb-3">
+          <div 
+            key={project.id} 
+            className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-3"
+          >
             <div className="portfolio-item">
               <a href={project.link} target="_blank" rel="noopener noreferrer">
-                <img src={project.image} className="portfolio-image img-fluid" alt="Portfolio Project" />
+                <img 
+                  src={project.image} 
+                  className="portfolio-image img-fluid" 
+                  alt={`Portfolio Project ${project.id}`} 
+                />
               </a>
             </div>
-          </Col>
+          </div>
         ))}
-      </Row>
-    </Container>
+      </div>
+    </div>
   );
 };
 

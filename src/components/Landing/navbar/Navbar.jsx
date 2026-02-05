@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-  Navbar,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  Button,
-  Container,
-} from "react-bootstrap";
-import { BiChat } from "react-icons/bi"; // <-- import React icon here
+import { BiChat } from "react-icons/bi";
 import "./Navbar.css";
 import PopUp from "../popUp/PopUp";
 
@@ -17,12 +9,13 @@ const ResponsiveNavbar = () => {
 
   return (
     <>
-      <Navbar light className="custom-navbar shadow-sm">
-        <Container className="d-flex align-items-center justify-content-between">
+      <nav className="navbar navbar-light custom-navbar shadow-sm">
+        <div className="container d-flex align-items-center justify-content-between">
+          
           {/* Logo */}
-          <NavbarBrand
+          <a
             href="https://ahaansoftware.com/"
-            className="fw-bold d-flex align-items-center"
+            className="navbar-brand fw-bold d-flex align-items-center"
           >
             <img
               src="https://ahaanmedia.com/asc/layouts/asc.png"
@@ -30,15 +23,13 @@ const ResponsiveNavbar = () => {
               className="me-2"
               style={{ height: "50px" }}
             />
-          </NavbarBrand>
+          </a>
 
           {/* Contact and Button Section - Always visible */}
-          <Nav
-            className="ms-auto align-items-start align-items-md-center nav-responsive"
-            navbar
-          >
+          <div className="ms-auto d-flex align-items-center nav-responsive">
+            
             {/* India Contact */}
-            <NavItem className="me-md-4 mb-3 mb-md-0">
+            <div className="d-none d-md-block me-md-4">
               <a
                 href="tel:+918981744661"
                 className="d-flex align-items-center text-decoration-none"
@@ -52,10 +43,10 @@ const ResponsiveNavbar = () => {
                   +91 898 174 4661
                 </span>
               </a>
-            </NavItem>
+            </div>
 
             {/* USA Contact */}
-            <NavItem className="me-md-4 mb-3 mb-md-0">
+            <div className="d-none d-md-block me-md-4">
               <a
                 href="tel:+13214210740"
                 className="d-flex align-items-center text-decoration-none"
@@ -69,24 +60,25 @@ const ResponsiveNavbar = () => {
                   +1 321 421 0740
                 </span>
               </a>
-            </NavItem>
+            </div>
 
             {/* Enquiry Button */}
-            <NavItem>
-              <Button
-                className="custom-button w-100 w-md-auto enquiry-button"
+            <div>
+              <button
+                type="button"
+                className="btn custom-button enquiry-button d-flex align-items-center justify-content-center"
                 onClick={toggleForm}
               >
-                {/* React Icon: visible only on mobile */}
+                {/* React Icon: typically handles its own sizing via CSS */}
                 <BiChat className="enquiry-icon" />
 
                 {/* Text: visible on tablet & desktop */}
-                <span className="enquiry-text">Enquiry Now</span>
-              </Button>
-            </NavItem>
-          </Nav>
-        </Container>
-      </Navbar>
+                <span className="enquiry-text ms-1">Enquiry Now</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
 
       {showForm && <PopUp onClose={toggleForm} />}
     </>

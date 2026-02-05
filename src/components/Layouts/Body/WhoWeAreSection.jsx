@@ -1,28 +1,28 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import { BsBarChartLine, BsPeople, BsCheckCircle } from "react-icons/bs"; // ✅ Added BsCheckCircle
-import "./WhoWeAreSection.css";
+import { BsBarChartLine, BsPeople } from "react-icons/bs";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import "./WhoWeAreSection.css";
 
 const WhoWeAreSection = () => {
   return (
     <section className="who-we-are-section py-5">
-      <Container>
-        <Row className="align-items-center">
+      <div className="container">
+        <div className="row align-items-center">
+          
           {/* Left Image Section */}
-          <Col lg={6} md={12} className="text-center mb-4 mb-lg-0">
+          <div className="col-lg-6 col-md-12 text-center mb-4 mb-lg-0">
             <img
               src="https://ahaanmedia.com/asc/All/Who-We-Are.gif"
               alt="Mobile and Web Development"
               className="img-fluid who-we-are-image"
             />
-          </Col>
+          </div>
 
           {/* Right Content Section */}
-          <Col lg={6} md={12}>
+          <div className="col-lg-6 col-md-12">
             <div className="who-we-are-content">
               <h6 className="subtitle">
-               About Ahaan Software <span className="divider"></span>
+                About Ahaan Software <span className="divider"></span>
               </h6>
               <h2 className="main-title">
                 <span className="highlight-text">
@@ -34,61 +34,62 @@ const WhoWeAreSection = () => {
                 to driving innovation and transformation through cutting-edge
                 technology. With a proven track record of delivering over 100
                 successful custom web and mobile development projects, we
-                empower businesses to achieve excellence, efficiency, and growth
+                earnestly empower businesses to achieve excellence, efficiency, and growth
                 through tailored digital solutions.
               </p>
 
-              <Row className="feature-row mt-4">
-                <Col sm={6}>
+              <div className="row feature-row mt-4">
+                <div className="col-sm-6 mb-3 mb-sm-0">
                   <div className="feature-box">
                     <div className="icon-circle">
                       <BsBarChartLine className="feature-icon" />
                     </div>
                     <h5>Cutting-Edge Tech Expertise</h5>
                   </div>
-                </Col>
-                <Col sm={6}>
+                </div>
+                <div className="col-sm-6">
                   <div className="feature-box">
                     <div className="icon-circle">
                       <BsPeople className="feature-icon" />
                     </div>
                     <h5>Built to Perform</h5>
                   </div>
-                </Col>
-              </Row>
+                </div>
+              </div>
 
-              {/* ✅ Checklist with React Icons */}
-              <ul className="checklist mt-4">
-                <li>
-                  <IoMdCheckmarkCircleOutline className="check-icon" /> Web &
-                  mobile solutions
+              {/* Checklist with React Icons */}
+              <ul className="checklist mt-4 list-unstyled">
+                <li className="mb-2">
+                  <IoMdCheckmarkCircleOutline className="check-icon me-2" /> 
+                  Web & mobile solutions
                 </li>
-                <li>
-                  <IoMdCheckmarkCircleOutline className="check-icon" /> Quality
-                  development
+                <li className="mb-2">
+                  <IoMdCheckmarkCircleOutline className="check-icon me-2" /> 
+                  Quality development
                 </li>
-                <li>
-                  <IoMdCheckmarkCircleOutline className="check-icon" />{" "}
+                <li className="mb-2">
+                  <IoMdCheckmarkCircleOutline className="check-icon me-2" /> 
                   Maintenance & support
                 </li>
-                <li>
-                  <IoMdCheckmarkCircleOutline className="check-icon" /> Secure &
-                  scalable apps
+                <li className="mb-2">
+                  <IoMdCheckmarkCircleOutline className="check-icon me-2" /> 
+                  Secure & scalable apps
                 </li>
-                <li>
-                  <IoMdCheckmarkCircleOutline className="check-icon" /> Custom
-                  solutions
+                <li className="mb-2">
+                  <IoMdCheckmarkCircleOutline className="check-icon me-2" /> 
+                  Custom solutions
                 </li>
-                <li>
-                  <IoMdCheckmarkCircleOutline className="check-icon" />{" "}
+                <li className="mb-2">
+                  <IoMdCheckmarkCircleOutline className="check-icon me-2" /> 
                   Innovative approach
                 </li>
               </ul>
             </div>
-          </Col>
-        </Row>
-      </Container>
-      <hr style={{border:"none"}}/>
+          </div>
+        </div>
+      </div>
+      {/* Horizontal rule using standard Bootstrap spacing */}
+      <div className="py-2"></div>
     </section>
   );
 };

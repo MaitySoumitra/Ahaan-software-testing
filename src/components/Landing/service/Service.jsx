@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+// Removed Container, Row, Col imports
 import { TbDeviceDesktopCode } from "react-icons/tb";
 import { ImMobile } from "react-icons/im";
 import { TiShoppingCart } from "react-icons/ti";
@@ -10,7 +10,7 @@ import './Service.css';
 
 const services = [
   {
-    icon:<TbDeviceDesktopCode />,
+    icon: <TbDeviceDesktopCode />,
     title: 'Web Development',
     description: 'We craft agile, scalable & budget-friendly websites tailored for success!',
   },
@@ -44,29 +44,29 @@ const services = [
 const Services = () => {
   return (
     <section className="services-section">
-      <Container>
+      <div className="container">
         {/* Heading */}
-        <Row className="justify-content-center">
-          <Col md={8} className="text-center">
+        <div className="row justify-content-center">
+          <div className="col-md-8 text-center">
             <h2 className="services-heading">Services We Offer</h2>
-          </Col>
-        </Row>
+          </div>
+        </div>
 
         {/* Service Cards */}
-        <Row>
+        <div className="row">
           {services.map((service, index) => (
-            <Col xs={12} sm={6} md={4} lg={4} key={index} className="mb-4">
-              <div className="service-card text-center">
-                <div className="service-icon">
+            <div key={index} className="col-12 col-sm-6 col-md-4 mb-4">
+              <div className="service-card text-center h-100">
+                <div className="service-icon mb-3">
                   {service.icon}
                 </div>
                 <h3 className="service-title">{service.title}</h3>
                 <p className="service-description">{service.description}</p>
               </div>
-            </Col>
+            </div>
           ))}
-        </Row>
-      </Container>
+        </div>
+      </div>
     </section>
   );
 };

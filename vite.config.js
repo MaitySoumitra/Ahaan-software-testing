@@ -8,7 +8,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           'lottie-vendor': ['@lottiefiles/dotlottie-react'],
-          'bootstrap-vendor': ['bootstrap', 'react-bootstrap'],
+          'bootstrap-vendor': ['bootstrap'],
           'map-vendor': ['leaflet', 'leaflet.markercluster'],
           'vendors': ['axios', 'react-router-dom', 'swiper'],
         },

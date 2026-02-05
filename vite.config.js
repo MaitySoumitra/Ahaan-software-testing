@@ -6,14 +6,16 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          'lottie-vendor': ['@lottiefiles/dotlottie-react'],
-          'bootstrap-vendor': ['bootstrap'],
-          'map-vendor': ['leaflet', 'leaflet.markercluster'],
-          'vendors': ['axios', 'react-router-dom', 'swiper'],
+        manualChunks(id) {
+        
+          if (id.includes('node_modules')) {
+            if (id.includes('@lottiefiles')) return 'lottie-vendor';
+            if (id.includes('leaflet')) return 'map-vendor';
+            return 'vendors'; 
+          }
         },
       },
     },
-    chunkSizeWarningLimit: 800, 
+    chunkSizeWarningLimit: 1000, 
   },
 })

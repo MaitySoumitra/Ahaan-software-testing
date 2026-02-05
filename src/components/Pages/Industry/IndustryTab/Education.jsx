@@ -1,5 +1,3 @@
-import React from "react";
-// Removed react-bootstrap imports
 import "./TabContent.css";
 
 const gridcontent = [

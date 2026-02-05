@@ -2,9 +2,7 @@ import React, { lazy, Suspense } from "react";
 
 // 1. KEEP THESE AS STANDARD IMPORTS (Above the fold)
 import HeroBanner from "../../Layouts/Body/HeroBanner";
-import WhoWeAreSection from "../../Layouts/Body/WhoWeAreSection";
-
-// 2. LAZY LOAD THE REST (Below the fold)
+const WhoWeAreSection =lazy(()=>import("../../Layouts/Body/WhoWeAreSection")) 
 const ServicesSection = lazy(() => import("../Portfolio/ServicesSection"));
 const ThirdSection = lazy(() => import("../../Layouts/Body/ThirdSection"));
 const TotalProject = lazy(() => import("../../Layouts/Body/TotalProject"));
@@ -21,7 +19,7 @@ const Home = () => {
   return (
     <div>
       <HeroBanner />
-      <WhoWeAreSection />
+      
 
       <Suspense fallback={
         <div className="d-flex justify-content-center align-items-center py-5">
@@ -32,6 +30,7 @@ const Home = () => {
           </div>
         </div>
       }>
+        <WhoWeAreSection />
         <ServicesSection />
         <ThirdSection />
         <TotalProject />

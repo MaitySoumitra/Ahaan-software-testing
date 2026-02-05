@@ -12,7 +12,7 @@ const WhoWeAreSection = () => {
           {/* Left Image Section */}
           <Col lg={6} md={12} className="text-center mb-4 mb-lg-0">
             <img
-              src="/Who-We-Are.jpg"
+              src="https://ahaanmedia.com/asc/All/Who-We-Are.gif"
               alt="Mobile and Web Development"
               className="img-fluid who-we-are-image"
             />

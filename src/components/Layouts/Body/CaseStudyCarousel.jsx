@@ -31,7 +31,7 @@ const CaseStudyCarousel = () => {
   ];
 
   return (
-    <section className="case-section py-5">
+    <section className="case-section py-5 ">
       <div className="container">
         {/* 🔹 Section Heading */}
         <div className="row text-center mb-4">
@@ -106,7 +106,7 @@ const CaseStudyCarousel = () => {
         </Swiper>
 
         {/* 🔹 Right-Aligned Button */}
-        <div className="view-all-btn d-flex justify-content-end mt-4">
+        <div className="view-all-btn d-flex justify-content-end mt-4 mb-4">
           <a href="/portfolio" className="text-decoration-none">
             View All →
           </a>
@@ -114,12 +114,7 @@ const CaseStudyCarousel = () => {
       </div>
 
       {/* 🔹 Bottom Wave Divider */}
-      <section className="wave-section">
-        <div className="wave wave1"></div>
-        <div className="wave wave2"></div>
-        <div className="wave wave3"></div>
-        <div className="wave wave4"></div>
-      </section>
+     
     </section>
   );
 };

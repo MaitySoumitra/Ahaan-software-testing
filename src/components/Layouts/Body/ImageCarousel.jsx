@@ -52,16 +52,16 @@ const BusinessCard = () => {
         </div>
        
         <div className="side-image-card fourth-column">
-          <img src="https://ahaanmedia.com/asc/gallery/gallery1.jpg" alt="Single Image" />
+          <img src="https://ahaanmedia.com/asc/gallery/gallery10.jpg" alt="Single Image" />
         </div>
         <div className="side-image-card final-column">
-          <img src="https://ahaanmedia.com/asc/gallery/gallery1.jpg" alt="Single Image" />
+          <img src="https://ahaanmedia.com/asc/gallery/gallery9.jpg" alt="Single Image" />
         </div>
         <div className="side-image-card fourth-column">
-          <img src="https://ahaanmedia.com/asc/gallery/gallery1.jpg" alt="Single Image" />
+          <img src="https://ahaanmedia.com/asc/gallery/gallery12.jpg" alt="Single Image" />
         </div>
         <div className="side-image-card third-column">
-          <img src="https://ahaanmedia.com/asc/gallery/gallery1.jpg" alt="Single Image" />
+          <img src="https://ahaanmedia.com/asc/gallery/gallery11.jpg" alt="Single Image" />
         </div>
          {/* <div className="side-image-card third-column-tablet">
           <img src="https://ahaanmedia.com/asc/gallery/gallery1.jpg" alt="Single Image" />
@@ -110,5 +110,6 @@ const BusinessCard = () => {
 };
  
 export default BusinessCard;
+ 
  
  

@@ -1,9 +1,9 @@
 import React from "react";
 import "./WhatsAppChat.css";
-
+ 
 const WhatsAppChat = () => {
   const phoneNumber = "+13214210740";
-
+ 
   return (
     <a
       href={`https://wa.me/${phoneNumber}`}
@@ -18,5 +18,5 @@ const WhatsAppChat = () => {
     </a>
   );
 };
-
+ 
 export default WhatsAppChat;

@@ -83,7 +83,7 @@ const ContactUs = () => {
                   <strong>Phone:</strong>
                   <p className="mb-1">
                     <a href="https://wa.me/13214210740" target="_blank" rel="noopener noreferrer" className="whatsapp-link">
-                      +1 321 421 0740
+                      1-904-331-2074
                     </a>
                   </p>
                   <p className="mb-1">
@@ -91,11 +91,11 @@ const ContactUs = () => {
                       +91 98303 71143
                     </a>
                   </p>
-                  <p className="mb-0">
+                  {/* <p className="mb-0">
                     <a href="https://wa.me/6590745876" target="_blank" rel="noopener noreferrer" className="whatsapp-link">
                       +65 9074 5876
                     </a>
-                  </p>
+                  </p> */}
                 </div>
               </div>
 

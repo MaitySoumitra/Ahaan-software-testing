@@ -249,17 +249,17 @@ const Footer = () => {
                 <li className="d-flex align-items-center flex-nowrap mb-2">
                   <FaPhoneAlt className="me-2 flex-shrink-0 footer-icon" />
                   <span className="d-flex flex-wrap gap-1 add">
-                    <a href="https://wa.me/13214210740" target="_blank" rel="noopener noreferrer" className="text-decoration-none text-white">
-                      +1-321-421-0740
+                    <a href="https://wa.me/19043312074" target="_blank" rel="noopener noreferrer" className="text-decoration-none text-white">
+                      +1-904-331-2074
                     </a>
                     <span>/</span>
                     <a href="https://wa.me/919830371143" target="_blank" rel="noopener noreferrer" className="text-decoration-none text-white">
                       +91-983-037-1143
                     </a>
-                    <span>/</span>
+                    {/* <span>/</span>
                     <a href="https://wa.me/6590745876" target="_blank" rel="noopener noreferrer" className="text-decoration-none text-white">
                       +65-9074-5876
-                    </a>
+                    </a> */}
                   </span>
                 </li>
                 <li className="d-flex align-items-center mb-2">
@@ -274,26 +274,45 @@ const Footer = () => {
         </div>
 
         {/* Footer Bottom */}
-        <div className="footer-bottom mt-4 pt-3 border-top border-secondary">
-          <div className="row align-items-center">
-            <div className="col-md-6">
-              <p className="footer-bottom-text mb-0 text-start" style={{ color: "#a3a3a3" }}>
-                {isMobile ? "© 2025 Ahaan Software Consulting" : "© 2025 Ahaan Software, All rights reserved."}
-              </p>
-            </div>
-            <div className="col-md-6 text-md-end text-center mt-3 mt-md-0">
-              <div className="footer-social-icons d-inline-flex gap-3">
-                <a href="https://www.facebook.com/ahaansoftwareconsulting" target="_blank" rel="noopener noreferrer" className="icon facebook text-white">
-                  <FaFacebookF />
-                </a>
-                <a href="https://www.instagram.com/ahaansoftware/" target="_blank" rel="noopener noreferrer" className="icon instagram text-white">
-                  <FaInstagram />
-                </a>
-                <a href="https://www.linkedin.com/company/ahaansoftware" target="_blank" rel="noopener noreferrer" className="icon linkedin text-white">
-                  <FaLinkedinIn />
-                </a>
-              </div>
-            </div>
+            <div className="footer-bottom mt-4 pt-3">
+          <p
+            className="footer-bottom-text mb-2 text-left"
+            style={{ color: "#a3a3a3ff" }}
+          >
+            {isMobile
+              ? "© 2025 Ahaan Software Consulting"
+              : "© 2025 Ahaan Software, All rights reserved."}
+          </p>
+          <div className="footer-social-icons text-center">
+            <a
+              href="https://www.facebook.com/ahaansoftwareconsulting"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="icon facebook"
+            >
+              <span className="tooltip">Facebook</span>
+              <FaFacebookF />
+            </a>
+ 
+            <a
+              href="https://www.instagram.com/ahaansoftware/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="icon instagram"
+            >
+              <span className="tooltip">Instagram</span>
+              <FaInstagram />
+            </a>
+ 
+            <a
+              href="https://www.linkedin.com/company/ahaansoftware"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="icon linkedin"
+            >
+              <span className="tooltip">LinkedIn</span>
+              <FaLinkedinIn />
+            </a>
           </div>
         </div>
       </div>
